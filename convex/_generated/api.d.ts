@@ -18,6 +18,7 @@ import type * as moments from "../moments.js";
 import type * as plays from "../plays.js";
 import type * as seed from "../seed.js";
 import type * as starterGames from "../starterGames.js";
+import type * as thumbnails from "../thumbnails.js";
 import type * as users from "../users.js";
 
 import type {
@@ -37,6 +38,7 @@ declare const fullApi: ApiFromModules<{
   plays: typeof plays;
   seed: typeof seed;
   starterGames: typeof starterGames;
+  thumbnails: typeof thumbnails;
   users: typeof users;
 }>;
 

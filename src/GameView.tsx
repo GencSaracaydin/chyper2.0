@@ -7,6 +7,7 @@ export type GameMessage =
   | { type: "ready" }
   | { type: "start" }
   | { type: "over"; score: number }
+  | { type: "snapshot"; image: string }
   | { type: "error"; message: string };
 
 export function GameView({ code, onMessage }: { code: string; onMessage?: (message: GameMessage) => void }) {

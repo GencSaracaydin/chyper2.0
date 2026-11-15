@@ -7,7 +7,7 @@ export const SDK_SOURCE = String.raw`
   var IMAGES = {}, SOUNDS = {};
   function assetUrl(key) { return (window.ASSET_BASE || "") + "/asset/" + key; }
   function image(key) {
-    if (!IMAGES[key]) { IMAGES[key] = new Image(); IMAGES[key].src = assetUrl(key); }
+    if (!IMAGES[key]) { IMAGES[key] = new Image(); IMAGES[key].crossOrigin = "anonymous"; IMAGES[key].src = assetUrl(key); }
     return IMAGES[key];
   }
   function sound(key) {
@@ -89,7 +89,7 @@ export const SDK_SOURCE = String.raw`
     game: function (definition) { def = definition; }
   };
   window.G = G;
-  var def = null, state = "ready", best = 0, overAt = 0, last = 0, pendingEnd = false;
+  var def = null, state = "ready", best = 0, overAt = 0, last = 0, pendingEnd = false, snapped = false;
 
   function resize() {
     var dpr = window.devicePixelRatio || 1;
@@ -162,6 +162,15 @@ export const SDK_SOURCE = String.raw`
       G.text("Tap to retry", G.W / 2, G.H * 0.66, u * 0.055, null, "500");
     }
     if (state === "crashed") G.text("This game crashed", G.W / 2, G.H * 0.5, u * 0.07, "#ff5c7a");
+    if (state === "playing" && G.time > 1.5 && !snapped) {
+      snapped = true;
+      try {
+        var shot = document.createElement("canvas");
+        shot.width = 300; shot.height = Math.round(300 * G.H / G.W);
+        shot.getContext("2d").drawImage(canvas, 0, 0, shot.width, shot.height);
+        post({ type: "snapshot", image: shot.toDataURL("image/jpeg", 0.75) });
+      } catch (e) {}
+    }
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);

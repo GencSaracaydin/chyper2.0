@@ -24,6 +24,8 @@ async function withCode(ctx: QueryCtx, game: Doc<"games">) {
     code: version?.code ?? null,
     versionNumber: version?.number ?? 0,
     summary: version?.summary ?? null,
+    visitors: game.visitors ?? 0,
+    thumbnailUrl: game.thumbnail ? await ctx.storage.getUrl(game.thumbnail) : null,
   };
 }
 
