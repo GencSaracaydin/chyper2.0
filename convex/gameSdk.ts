@@ -136,6 +136,7 @@ export const SDK_SOURCE = String.raw`
       G.particles = G.particles.filter(function (q) { return q.life > 0; });
       G.shakeTime = Math.max(0, G.shakeTime - dt);
       if (pendingEnd) {
+        snapshot();
         pendingEnd = false; state = "over"; overAt = now;
         G.score = Math.floor(G.score); best = Math.max(best, G.score);
         post({ type: "over", score: G.score });
@@ -162,7 +163,11 @@ export const SDK_SOURCE = String.raw`
       G.text("Tap to retry", G.W / 2, G.H * 0.66, u * 0.055, null, "500");
     }
     if (state === "crashed") G.text("This game crashed", G.W / 2, G.H * 0.5, u * 0.07, "#ff5c7a");
-    if (state === "playing" && G.time > 1.5 && !snapped) {
+    if (state === "playing" && G.time > 1.5) snapshot();
+    requestAnimationFrame(frame);
+  }
+  function snapshot() {
+    if (!snapped) {
       snapped = true;
       try {
         var shot = document.createElement("canvas");
@@ -171,7 +176,6 @@ export const SDK_SOURCE = String.raw`
         post({ type: "snapshot", image: shot.toDataURL("image/jpeg", 0.75) });
       } catch (e) {}
     }
-    requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
   document.addEventListener("DOMContentLoaded", function () { if (!def) post({ type: "error", message: "The game never called G.game({...})" }); else post({ type: "ready" }); });
