@@ -3,6 +3,17 @@ export const SDK_SOURCE = String.raw`
   var canvas = document.getElementById("c");
   var ctx = canvas.getContext("2d");
   var SHAPES = { circle: 1, square: 1, triangle: 1, diamond: 1, star: 1, heart: 1 };
+  var ASSET_KEY = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+  var IMAGES = {}, SOUNDS = {};
+  function assetUrl(key) { return (window.ASSET_BASE || "") + "/asset/" + key; }
+  function image(key) {
+    if (!IMAGES[key]) { IMAGES[key] = new Image(); IMAGES[key].src = assetUrl(key); }
+    return IMAGES[key];
+  }
+  function sound(key) {
+    if (!SOUNDS[key]) { SOUNDS[key] = new Audio(assetUrl(key)); SOUNDS[key].preload = "auto"; }
+    return SOUNDS[key];
+  }
   function post(msg) {
     var s = JSON.stringify(msg);
     if (window.ReactNativeWebView) window.ReactNativeWebView.postMessage(s);
@@ -24,6 +35,14 @@ export const SDK_SOURCE = String.raw`
     sprite: function (name, x, y, size, color, angle) {
       if (!name) return;
       ctx.save(); ctx.translate(x, y); if (angle) ctx.rotate(angle);
+      if (!SHAPES[name] && ASSET_KEY.test(name)) {
+        var img = image(name);
+        if (img.complete && img.naturalWidth) {
+          var k = size / Math.max(img.naturalWidth, img.naturalHeight), w = img.naturalWidth * k, h = img.naturalHeight * k;
+          ctx.drawImage(img, -w / 2, -h / 2, w, h);
+        }
+        ctx.restore(); return;
+      }
       if (!SHAPES[name]) {
         ctx.font = Math.round(size) + "px system-ui, Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif";
         ctx.textAlign = "center"; ctx.textBaseline = "middle";
@@ -40,6 +59,16 @@ export const SDK_SOURCE = String.raw`
       else if (name === "star") { for (var i = 0; i < 10; i++) { var a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? r * 0.45 : r; ctx.lineTo(Math.cos(a) * rr, Math.sin(a) * rr); } }
       else if (name === "heart") { ctx.moveTo(0, r * 0.9); ctx.bezierCurveTo(-r * 1.4, -r * 0.1, -r * 0.5, -r * 1.1, 0, -r * 0.35); ctx.bezierCurveTo(r * 0.5, -r * 1.1, r * 1.4, -r * 0.1, 0, r * 0.9); }
       ctx.closePath(); ctx.fill(); ctx.restore();
+    },
+    sound: function (key, volume) {
+      try {
+        var base = sound(key), a = base.paused ? base : base.cloneNode();
+        a.volume = volume == null ? 1 : volume; a.currentTime = 0;
+        var played = a.play(); if (played && played.catch) played.catch(function () {});
+      } catch (e) {}
+    },
+    load: function (keys) {
+      for (var i = 0; i < keys.length; i++) { if (/^(sfx|music)-/.test(keys[i])) sound(keys[i]); else image(keys[i]); }
     },
     text: function (str, x, y, size, color, weight) {
       ctx.fillStyle = color || def.textColor;
@@ -136,14 +165,14 @@ export const SDK_SOURCE = String.raw`
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
-  setTimeout(function () { if (!def) post({ type: "error", message: "The game never called G.game({...})" }); else post({ type: "ready" }); }, 0);
+  document.addEventListener("DOMContentLoaded", function () { if (!def) post({ type: "error", message: "The game never called G.game({...})" }); else post({ type: "ready" }); });
 })();
 `;
 
 export const SDK_DOCS = `The environment is a full-screen portrait HTML canvas on a phone. Your code runs after it, as plain browser JavaScript (no imports, no network, no DOM besides the canvas). Everything is on the global \`G\`.
 
 Register exactly one game with \`G.game({...})\`:
-- title, icon (emoji or shape shown on the start screen), background (CSS color), textColor, accent, startText, overText: strings
+- title, icon (library image key, emoji or shape shown on the start screen), background (CSS color), textColor, accent, startText, overText: plain strings (no templates; the score is shown for you)
 - start(): reset ALL game state for a new run (called on every start/retry)
 - update(dt): advance the game by dt seconds; call G.end() when the player loses
 - draw(ctx): draw the world (the background is already cleared to \`background\`)
@@ -155,7 +184,9 @@ Helpers and state on G:
 - G.W, G.H: canvas size in CSS pixels (can change on resize; read them every frame). G.unit = min(W, H*0.6): use it to size things so the game looks right on every phone.
 - G.score: set or increment it; it is shown and reported. G.time: seconds since this run started.
 - G.ctx: the 2D context (also passed to draw).
-- G.sprite(name, x, y, size, color?, angle?): draws an asset centered at x,y. name is any emoji (e.g. "🐸", "🚗", "⭐", "🔥") or a shape: "circle", "square", "triangle", "diamond", "star", "heart" (shapes use color).
+- G.sprite(name, x, y, size, color?, angle?): draws an asset centered at x,y, scaled so its longest side is size (aspect ratio kept). name is a library image key (see the asset library), any emoji (e.g. "🐸", "🚗", "⭐", "🔥"), or a shape: "circle", "square", "triangle", "diamond", "star", "heart" (shapes use color).
+- G.sound(key, volume?): plays a library sound (keys start with "sfx-" or "music-"). Use short sounds for feedback: jump, coin, hit, game over.
+- G.load([keys]): preload library images and sounds; call it once at the top level of your code with every key you use.
 - G.text(str, x, y, size, color?, weight?)
 - G.rand(a, b), G.randInt(a, b), G.pick(list), G.clamp(v, a, b), G.lerp(a, b, t)
 - G.circleHit(ax, ay, ar, bx, by, br), G.rectHit(ax, ay, aw, ah, bx, by, bw, bh), G.circleRectHit(cx, cy, r, x, y, w, h)

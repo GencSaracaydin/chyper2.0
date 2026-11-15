@@ -1,0 +1,476 @@
+{
+ "images": [
+  {
+   "key": "animal-bear",
+   "path": "characters/animal-pack-redux/PNG/Round/bear.png",
+   "description": "Round cartoon bear head, front view"
+  },
+  {
+   "key": "animal-chick",
+   "path": "characters/animal-pack-redux/PNG/Round/chick.png",
+   "description": "Round cartoon chick head, front view"
+  },
+  {
+   "key": "animal-chicken",
+   "path": "characters/animal-pack-redux/PNG/Round/chicken.png",
+   "description": "Round cartoon chicken head, front view"
+  },
+  {
+   "key": "animal-cow",
+   "path": "characters/animal-pack-redux/PNG/Round/cow.png",
+   "description": "Round cartoon cow head, front view"
+  },
+  {
+   "key": "animal-crocodile",
+   "path": "characters/animal-pack-redux/PNG/Round/crocodile.png",
+   "description": "Round cartoon crocodile head, front view"
+  },
+  {
+   "key": "animal-dog",
+   "path": "characters/animal-pack-redux/PNG/Round/dog.png",
+   "description": "Round cartoon dog head, front view"
+  },
+  {
+   "key": "animal-duck",
+   "path": "characters/animal-pack-redux/PNG/Round/duck.png",
+   "description": "Round cartoon duck head, front view"
+  },
+  {
+   "key": "animal-elephant",
+   "path": "characters/animal-pack-redux/PNG/Round/elephant.png",
+   "description": "Round cartoon elephant head, front view"
+  },
+  {
+   "key": "animal-frog",
+   "path": "characters/animal-pack-redux/PNG/Round/frog.png",
+   "description": "Round cartoon frog head, front view"
+  },
+  {
+   "key": "animal-giraffe",
+   "path": "characters/animal-pack-redux/PNG/Round/giraffe.png",
+   "description": "Round cartoon giraffe head, front view"
+  },
+  {
+   "key": "animal-gorilla",
+   "path": "characters/animal-pack-redux/PNG/Round/gorilla.png",
+   "description": "Round cartoon gorilla head, front view"
+  },
+  {
+   "key": "animal-hippo",
+   "path": "characters/animal-pack-redux/PNG/Round/hippo.png",
+   "description": "Round cartoon hippo head, front view"
+  },
+  {
+   "key": "animal-monkey",
+   "path": "characters/animal-pack-redux/PNG/Round/monkey.png",
+   "description": "Round cartoon monkey head, front view"
+  },
+  {
+   "key": "animal-owl",
+   "path": "characters/animal-pack-redux/PNG/Round/owl.png",
+   "description": "Round cartoon owl head, front view"
+  },
+  {
+   "key": "animal-panda",
+   "path": "characters/animal-pack-redux/PNG/Round/panda.png",
+   "description": "Round cartoon panda head, front view"
+  },
+  {
+   "key": "animal-parrot",
+   "path": "characters/animal-pack-redux/PNG/Round/parrot.png",
+   "description": "Round cartoon parrot head, front view"
+  },
+  {
+   "key": "animal-penguin",
+   "path": "characters/animal-pack-redux/PNG/Round/penguin.png",
+   "description": "Round cartoon penguin head, front view"
+  },
+  {
+   "key": "animal-pig",
+   "path": "characters/animal-pack-redux/PNG/Round/pig.png",
+   "description": "Round cartoon pig head, front view"
+  },
+  {
+   "key": "animal-rabbit",
+   "path": "characters/animal-pack-redux/PNG/Round/rabbit.png",
+   "description": "Round cartoon rabbit head, front view"
+  },
+  {
+   "key": "animal-snake",
+   "path": "characters/animal-pack-redux/PNG/Round/snake.png",
+   "description": "Round cartoon snake head, front view"
+  },
+  {
+   "key": "animal-whale",
+   "path": "characters/animal-pack-redux/PNG/Round/whale.png",
+   "description": "Round cartoon whale head, front view"
+  },
+  {
+   "key": "animal-zebra",
+   "path": "characters/animal-pack-redux/PNG/Round/zebra.png",
+   "description": "Round cartoon zebra head, front view"
+  },
+  {
+   "key": "bunny",
+   "path": "kits/jumper-pack/PNG/Players/bunny1_stand.png",
+   "description": "Cute bunny character standing (player)"
+  },
+  {
+   "key": "bunny-jump",
+   "path": "kits/jumper-pack/PNG/Players/bunny1_jump.png",
+   "description": "Cute bunny character jumping (player)"
+  },
+  {
+   "key": "platform-grass",
+   "path": "kits/jumper-pack/PNG/Environment/ground_grass.png",
+   "description": "Wide floating grass platform"
+  },
+  {
+   "key": "platform-grass-small",
+   "path": "kits/jumper-pack/PNG/Environment/ground_grass_small.png",
+   "description": "Small floating grass platform"
+  },
+  {
+   "key": "platform-wood",
+   "path": "kits/jumper-pack/PNG/Environment/ground_wood.png",
+   "description": "Wide floating wooden platform"
+  },
+  {
+   "key": "platform-snow",
+   "path": "kits/jumper-pack/PNG/Environment/ground_snow.png",
+   "description": "Wide floating snowy platform"
+  },
+  {
+   "key": "platform-cake",
+   "path": "kits/jumper-pack/PNG/Environment/ground_cake.png",
+   "description": "Wide floating cake platform"
+  },
+  {
+   "key": "spikes-up",
+   "path": "kits/jumper-pack/PNG/Environment/spikes_bottom.png",
+   "description": "Row of spikes pointing up"
+  },
+  {
+   "key": "spikes-down",
+   "path": "kits/jumper-pack/PNG/Environment/spikes_top.png",
+   "description": "Row of spikes pointing down"
+  },
+  {
+   "key": "spike-ball",
+   "path": "kits/jumper-pack/PNG/Enemies/spikeBall1.png",
+   "description": "Spiky ball hazard"
+  },
+  {
+   "key": "enemy-spike-man",
+   "path": "kits/jumper-pack/PNG/Enemies/spikeMan_stand.png",
+   "description": "Spiky walking enemy"
+  },
+  {
+   "key": "enemy-fly",
+   "path": "kits/jumper-pack/PNG/Enemies/flyMan_fly.png",
+   "description": "Flying enemy with propeller"
+  },
+  {
+   "key": "enemy-bird",
+   "path": "kits/jumper-pack/PNG/Enemies/wingMan1.png",
+   "description": "Winged flying enemy"
+  },
+  {
+   "key": "coin-gold",
+   "path": "kits/jumper-pack/PNG/HUD/coin_gold.png",
+   "description": "Gold coin"
+  },
+  {
+   "key": "coin-silver",
+   "path": "kits/jumper-pack/PNG/HUD/coin_silver.png",
+   "description": "Silver coin"
+  },
+  {
+   "key": "coin-bronze",
+   "path": "kits/jumper-pack/PNG/HUD/coin_bronze.png",
+   "description": "Bronze coin"
+  },
+  {
+   "key": "powerup-jetpack",
+   "path": "kits/jumper-pack/PNG/Items/powerup_jetpack.png",
+   "description": "Jetpack power-up badge"
+  },
+  {
+   "key": "powerup-wings",
+   "path": "kits/jumper-pack/PNG/Items/powerup_wings.png",
+   "description": "Wings power-up badge"
+  },
+  {
+   "key": "powerup-shield",
+   "path": "kits/jumper-pack/PNG/Items/powerup_bubble.png",
+   "description": "Shield bubble power-up badge"
+  },
+  {
+   "key": "spring",
+   "path": "kits/jumper-pack/PNG/Items/spring.png",
+   "description": "Bouncy spring"
+  },
+  {
+   "key": "carrot",
+   "path": "kits/jumper-pack/PNG/Items/carrot.png",
+   "description": "Carrot collectible"
+  },
+  {
+   "key": "plane-red",
+   "path": "kits/tappy-plane/PNG/Planes/planeRed1.png",
+   "description": "Red propeller plane, side view facing right"
+  },
+  {
+   "key": "plane-blue",
+   "path": "kits/tappy-plane/PNG/Planes/planeBlue1.png",
+   "description": "Blue propeller plane, side view facing right"
+  },
+  {
+   "key": "plane-yellow",
+   "path": "kits/tappy-plane/PNG/Planes/planeYellow1.png",
+   "description": "Yellow propeller plane, side view facing right"
+  },
+  {
+   "key": "plane-green",
+   "path": "kits/tappy-plane/PNG/Planes/planeGreen1.png",
+   "description": "Green propeller plane, side view facing right"
+  },
+  {
+   "key": "rock-up",
+   "path": "kits/tappy-plane/PNG/rock.png",
+   "description": "Tall rock spire pointing up (obstacle from the ground)"
+  },
+  {
+   "key": "rock-down",
+   "path": "kits/tappy-plane/PNG/rockDown.png",
+   "description": "Tall rock spire pointing down (obstacle from the ceiling)"
+  },
+  {
+   "key": "ground-grass",
+   "path": "kits/tappy-plane/PNG/groundGrass.png",
+   "description": "Long strip of grassy ground"
+  },
+  {
+   "key": "star-gold",
+   "path": "kits/tappy-plane/PNG/starGold.png",
+   "description": "Gold star collectible"
+  },
+  {
+   "key": "star-silver",
+   "path": "kits/tappy-plane/PNG/starSilver.png",
+   "description": "Silver star collectible"
+  },
+  {
+   "key": "star-bronze",
+   "path": "kits/tappy-plane/PNG/starBronze.png",
+   "description": "Bronze star collectible"
+  },
+  {
+   "key": "puff",
+   "path": "kits/tappy-plane/PNG/puffLarge.png",
+   "description": "White smoke puff"
+  },
+  {
+   "key": "medal-gold",
+   "path": "kits/tappy-plane/PNG/UI/medalGold.png",
+   "description": "Gold medal"
+  },
+  {
+   "key": "ship-1",
+   "path": "kits/simple-space/PNG/Default/ship_A.png",
+   "description": "Space ship pointing up (player)"
+  },
+  {
+   "key": "ship-2",
+   "path": "kits/simple-space/PNG/Default/ship_B.png",
+   "description": "Space ship pointing up, variant 2"
+  },
+  {
+   "key": "ship-3",
+   "path": "kits/simple-space/PNG/Default/ship_C.png",
+   "description": "Space ship pointing up, variant 3"
+  },
+  {
+   "key": "alien-ship-1",
+   "path": "kits/simple-space/PNG/Default/enemy_A.png",
+   "description": "Alien enemy ship pointing down"
+  },
+  {
+   "key": "alien-ship-2",
+   "path": "kits/simple-space/PNG/Default/enemy_B.png",
+   "description": "Alien enemy ship pointing down, variant 2"
+  },
+  {
+   "key": "alien-ship-3",
+   "path": "kits/simple-space/PNG/Default/enemy_C.png",
+   "description": "Alien enemy ship pointing down, variant 3"
+  },
+  {
+   "key": "meteor",
+   "path": "kits/simple-space/PNG/Default/meteor_large.png",
+   "description": "Large meteor"
+  },
+  {
+   "key": "meteor-detailed",
+   "path": "kits/simple-space/PNG/Default/meteor_detailedLarge.png",
+   "description": "Large detailed meteor"
+  },
+  {
+   "key": "space-star",
+   "path": "kits/simple-space/PNG/Default/star_large.png",
+   "description": "Small bright star for space backgrounds"
+  },
+  {
+   "key": "ball-blue",
+   "path": "kits/rolling-ball-assets/PNG/Default/ball_blue_large.png",
+   "description": "Shiny blue ball"
+  },
+  {
+   "key": "ball-red",
+   "path": "kits/rolling-ball-assets/PNG/Default/ball_red_large.png",
+   "description": "Shiny red ball"
+  },
+  {
+   "key": "block",
+   "path": "kits/rolling-ball-assets/PNG/Default/block_square.png",
+   "description": "Square stone block"
+  },
+  {
+   "key": "hole",
+   "path": "kits/rolling-ball-assets/PNG/Default/hole.png",
+   "description": "Round hole in the ground"
+  },
+  {
+   "key": "alien-green",
+   "path": "kits/physics-assets/PNG/Aliens/alienGreen_round.png",
+   "description": "Round green alien character"
+  },
+  {
+   "key": "alien-pink",
+   "path": "kits/physics-assets/PNG/Aliens/alienPink_round.png",
+   "description": "Round pink alien character"
+  },
+  {
+   "key": "alien-blue",
+   "path": "kits/physics-assets/PNG/Aliens/alienBlue_round.png",
+   "description": "Round blue alien character"
+  },
+  {
+   "key": "alien-yellow",
+   "path": "kits/physics-assets/PNG/Aliens/alienYellow_round.png",
+   "description": "Round yellow alien character"
+  },
+  {
+   "key": "cloud",
+   "path": "environment/background-elements/PNG/cloud1.png",
+   "description": "Fluffy white cloud"
+  },
+  {
+   "key": "cloud-2",
+   "path": "environment/background-elements/PNG/cloud3.png",
+   "description": "Fluffy white cloud, variant 2"
+  },
+  {
+   "key": "sun",
+   "path": "environment/background-elements/PNG/sun.png",
+   "description": "Cartoon sun"
+  },
+  {
+   "key": "moon",
+   "path": "environment/background-elements/PNG/moon_full.png",
+   "description": "Full moon"
+  },
+  {
+   "key": "tree",
+   "path": "environment/background-elements/PNG/tree01.png",
+   "description": "Round green tree"
+  },
+  {
+   "key": "hills",
+   "path": "environment/background-elements/PNG/Flat/hills1.png",
+   "description": "Wide band of rolling green hills (background)"
+  },
+  {
+   "key": "mountain",
+   "path": "environment/background-elements/PNG/Flat/mountain1.png",
+   "description": "Mountain (background)"
+  }
+ ],
+ "sounds": [
+  {
+   "key": "sfx-jump",
+   "path": "audio/digital-audio/Audio/phaseJump1.ogg",
+   "description": "Short jump boing"
+  },
+  {
+   "key": "sfx-jump-2",
+   "path": "audio/digital-audio/Audio/phaseJump3.ogg",
+   "description": "Short jump, variant 2"
+  },
+  {
+   "key": "sfx-laser",
+   "path": "audio/digital-audio/Audio/laser1.ogg",
+   "description": "Laser shot"
+  },
+  {
+   "key": "sfx-laser-2",
+   "path": "audio/digital-audio/Audio/laser4.ogg",
+   "description": "Laser shot, variant 2"
+  },
+  {
+   "key": "sfx-powerup",
+   "path": "audio/digital-audio/Audio/powerUp2.ogg",
+   "description": "Power-up collected"
+  },
+  {
+   "key": "sfx-powerup-2",
+   "path": "audio/digital-audio/Audio/powerUp7.ogg",
+   "description": "Power-up collected, variant 2"
+  },
+  {
+   "key": "sfx-coin",
+   "path": "audio/digital-audio/Audio/pepSound1.ogg",
+   "description": "Coin or point collected blip"
+  },
+  {
+   "key": "sfx-zap",
+   "path": "audio/digital-audio/Audio/zap1.ogg",
+   "description": "Electric zap"
+  },
+  {
+   "key": "sfx-fall",
+   "path": "audio/digital-audio/Audio/phaserDown2.ogg",
+   "description": "Descending fall or fail sound"
+  },
+  {
+   "key": "sfx-rise",
+   "path": "audio/digital-audio/Audio/phaserUp3.ogg",
+   "description": "Rising whoosh"
+  },
+  {
+   "key": "sfx-tone",
+   "path": "audio/digital-audio/Audio/tone1.ogg",
+   "description": "Single soft beep"
+  },
+  {
+   "key": "sfx-three-tone",
+   "path": "audio/digital-audio/Audio/threeTone1.ogg",
+   "description": "Three-note success blip"
+  },
+  {
+   "key": "music-jingle-1",
+   "path": "audio/music-jingles/Audio/8-Bit jingles/jingles_NES00.ogg",
+   "description": "Short 8-bit jingle, about 2 seconds"
+  },
+  {
+   "key": "music-jingle-2",
+   "path": "audio/music-jingles/Audio/8-Bit jingles/jingles_NES03.ogg",
+   "description": "Short 8-bit jingle, about 2 seconds"
+  },
+  {
+   "key": "music-jingle-3",
+   "path": "audio/music-jingles/Audio/8-Bit jingles/jingles_NES10.ogg",
+   "description": "Short 8-bit jingle, about 2 seconds"
+  }
+ ]
+}

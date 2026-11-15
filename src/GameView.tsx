@@ -10,7 +10,7 @@ export type GameMessage =
   | { type: "error"; message: string };
 
 export function GameView({ code, onMessage }: { code: string; onMessage?: (message: GameMessage) => void }) {
-  const html = useMemo(() => buildGameHtml(code), [code]);
+  const html = useMemo(() => buildGameHtml(code, process.env.EXPO_PUBLIC_CONVEX_SITE_URL!), [code]);
   return (
     <WebView
       key={html}
@@ -19,6 +19,8 @@ export function GameView({ code, onMessage }: { code: string; onMessage?: (messa
       originWhitelist={["about:blank"]}
       onShouldStartLoadWithRequest={(request) => request.url === "about:blank"}
       javaScriptEnabled
+      allowsInlineMediaPlayback
+      mediaPlaybackRequiresUserAction={false}
       scrollEnabled={false}
       bounces={false}
       setSupportMultipleWindows={false}
