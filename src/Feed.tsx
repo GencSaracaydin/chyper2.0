@@ -33,10 +33,10 @@ export function Feed({ onRemixed }: { onRemixed: (gameId: Id<"games">) => void }
           viewabilityConfig={{ itemVisiblePercentThreshold: 60 }}
           getItemLayout={(_, index) => ({ length: height, offset: height * index, index })}
           renderItem={({ item, index }) => (
-            <View style={{ height, backgroundColor: item.config?.colors.background ?? colors.bg }}>
-              {index === active && item.config ? (
+            <View style={{ height, backgroundColor: colors.bg }}>
+              {index === active && item.code ? (
                 <GameView
-                  config={item.config}
+                  code={item.code}
                   onMessage={async (message) => {
                     if (message.type === "over") {
                       await recordPlay({ gameId: item._id, deviceId: await getDeviceId(), score: message.score });

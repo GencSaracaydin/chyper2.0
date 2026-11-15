@@ -7,10 +7,10 @@ import { Editor } from "./Editor";
 import { colors, ui } from "./ui";
 
 const IDEAS = [
-  "A cat dodging falling cucumbers",
-  "Flappy bird but you're a rocket in space",
-  "Stack pancakes as high as you can",
-  "A ninja jumping over lava rocks",
+  "A frog hopping across a busy road",
+  "Drag a basket to catch falling fruit, avoid bombs",
+  "Tap to switch gravity and dodge spikes",
+  "A snake that grows every time you tap a dot",
 ];
 
 export function Studio({ openGameId, setOpenGameId }: { openGameId: Id<"games"> | null; setOpenGameId: (id: Id<"games"> | null) => void }) {
@@ -40,7 +40,7 @@ export function Studio({ openGameId, setOpenGameId }: { openGameId: Id<"games"> 
       ListHeaderComponent={
         <View style={styles.header}>
           <Text style={ui.h1}>Make a game</Text>
-          <Text style={ui.muted}>Describe it in a sentence. Tap the mic on your keyboard to dictate.</Text>
+          <Text style={ui.muted}>Describe your game idea. The AI writes it, you play it and keep refining it. Tap the mic on your keyboard to dictate.</Text>
           <TextInput
             style={[ui.input, styles.prompt]}
             placeholder="A frog hopping over traffic cones…"
@@ -65,7 +65,9 @@ export function Studio({ openGameId, setOpenGameId }: { openGameId: Id<"games"> 
       }
       renderItem={({ item }) => (
         <Pressable style={styles.row} onPress={() => setOpenGameId(item._id)}>
-          <View style={[styles.swatch, { backgroundColor: item.config?.colors.accent ?? colors.card }]} />
+          <View style={styles.swatch}>
+            <Text style={styles.swatchText}>{item.title.slice(0, 1).toUpperCase()}</Text>
+          </View>
           <View style={{ flex: 1 }}>
             <Text style={ui.h2}>{item.title}</Text>
             <Text style={ui.muted}>
@@ -85,5 +87,6 @@ const styles = StyleSheet.create({
   chips: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
   mine: { marginTop: 16 },
   row: { flexDirection: "row", alignItems: "center", gap: 12, backgroundColor: colors.card, borderRadius: 14, padding: 14 },
-  swatch: { width: 36, height: 36, borderRadius: 10 },
+  swatch: { width: 36, height: 36, borderRadius: 10, backgroundColor: colors.accent, alignItems: "center", justifyContent: "center" },
+  swatchText: { color: colors.text, fontSize: 18, fontWeight: "800" },
 });

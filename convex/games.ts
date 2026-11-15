@@ -3,7 +3,6 @@ import { v } from "convex/values";
 import { internal } from "./_generated/api";
 import type { Doc, Id } from "./_generated/dataModel";
 import { internalMutation, internalQuery, mutation, query, type QueryCtx } from "./_generated/server";
-import { vGameConfig } from "./gameConfig";
 
 async function requireUser(ctx: QueryCtx) {
   const userId = await getAuthUserId(ctx);
@@ -18,11 +17,11 @@ async function requireOwnGame(ctx: QueryCtx, gameId: Id<"games">) {
   return game;
 }
 
-async function withConfig(ctx: QueryCtx, game: Doc<"games">) {
+async function withCode(ctx: QueryCtx, game: Doc<"games">) {
   const version = game.currentVersion ? await ctx.db.get(game.currentVersion) : null;
   return {
     ...game,
-    config: version?.config ?? null,
+    code: version?.code ?? null,
     versionNumber: version?.number ?? 0,
     summary: version?.summary ?? null,
   };
@@ -80,7 +79,7 @@ export const undo = mutation({
       .order("desc")
       .first();
     if (previous === null) return null;
-    await ctx.db.patch(gameId, { currentVersion: previous._id, title: previous.config.title });
+    await ctx.db.patch(gameId, { currentVersion: previous._id });
     return null;
   },
 });
@@ -115,7 +114,7 @@ export const remix = mutation({
     const versionId = await ctx.db.insert("gameVersions", {
       game: newGameId,
       number: 1,
-      config: version.config,
+      code: version.code,
       prompt: "Remix of " + source.title,
       summary: "Remixed from " + source.title + ". Describe what to change.",
     });
@@ -134,7 +133,7 @@ export const mine = query({
       .withIndex("by_owner", (q) => q.eq("owner", userId))
       .order("desc")
       .collect();
-    return await Promise.all(games.map((game) => withConfig(ctx, game)));
+    return await Promise.all(games.map((game) => withCode(ctx, game)));
   },
 });
 
@@ -145,7 +144,7 @@ export const get = query({
     if (game === null) return null;
     if (game.status !== "published" && game.owner !== (await getAuthUserId(ctx))) return null;
     const remixOf = game.remixOf ? await ctx.db.get(game.remixOf) : null;
-    return { ...(await withConfig(ctx, game)), remixOfTitle: remixOf?.title ?? null };
+    return { ...(await withCode(ctx, game)), remixOfTitle: remixOf?.title ?? null };
   },
 });
 
@@ -168,7 +167,7 @@ export const feed = query({
     return await Promise.all(
       ranked.map(async ({ game }) => {
         const remixOf = game.remixOf ? await ctx.db.get(game.remixOf) : null;
-        return { ...(await withConfig(ctx, game)), remixOfTitle: remixOf?.title ?? null };
+        return { ...(await withCode(ctx, game)), remixOfTitle: remixOf?.title ?? null };
       }),
     );
   },
@@ -180,7 +179,7 @@ export const loadForGeneration = internalQuery({
     const game = await ctx.db.get(gameId);
     if (game === null) return null;
     const version = game.currentVersion ? await ctx.db.get(game.currentVersion) : null;
-    return { config: version?.config ?? null };
+    return { code: version?.code ?? null };
   },
 });
 
@@ -195,9 +194,9 @@ export const setStage = internalMutation({
 });
 
 export const saveVersion = internalMutation({
-  args: { gameId: v.id("games"), config: vGameConfig, prompt: v.string(), summary: v.string() },
+  args: { gameId: v.id("games"), title: v.string(), code: v.string(), prompt: v.string(), summary: v.string() },
   returns: v.null(),
-  handler: async (ctx, { gameId, config, prompt, summary }) => {
+  handler: async (ctx, { gameId, title, code, prompt, summary }) => {
     const latest = await ctx.db
       .query("gameVersions")
       .withIndex("by_game", (q) => q.eq("game", gameId))
@@ -206,11 +205,11 @@ export const saveVersion = internalMutation({
     const versionId = await ctx.db.insert("gameVersions", {
       game: gameId,
       number: (latest?.number ?? 0) + 1,
-      config,
+      code,
       prompt,
       summary,
     });
-    await ctx.db.patch(gameId, { currentVersion: versionId, title: config.title, job: undefined });
+    await ctx.db.patch(gameId, { currentVersion: versionId, title, job: undefined });
     return null;
   },
 });

@@ -1,6 +1,5 @@
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
-import { vGameConfig } from "./gameConfig";
 
 export default defineSchema({
   users: defineTable({}),
@@ -29,7 +28,7 @@ export default defineSchema({
   gameVersions: defineTable({
     game: v.id("games"),
     number: v.number(),
-    config: vGameConfig,
+    code: v.string(),
     prompt: v.string(),
     summary: v.string(),
   }).index("by_game", ["game", "number"]),

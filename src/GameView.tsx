@@ -1,13 +1,16 @@
 import { useMemo } from "react";
 import { StyleSheet } from "react-native";
 import { WebView } from "react-native-webview";
-import type { GameConfig } from "../convex/gameConfig";
 import { buildGameHtml } from "../game/buildGameHtml";
 
-type GameMessage = { type: "ready" } | { type: "start" } | { type: "over"; score: number };
+export type GameMessage =
+  | { type: "ready" }
+  | { type: "start" }
+  | { type: "over"; score: number }
+  | { type: "error"; message: string };
 
-export function GameView({ config, onMessage }: { config: GameConfig; onMessage?: (message: GameMessage) => void }) {
-  const html = useMemo(() => buildGameHtml(config), [config]);
+export function GameView({ code, onMessage }: { code: string; onMessage?: (message: GameMessage) => void }) {
+  const html = useMemo(() => buildGameHtml(code), [code]);
   return (
     <WebView
       key={html}
@@ -29,5 +32,5 @@ export function GameView({ config, onMessage }: { config: GameConfig; onMessage?
 }
 
 const styles = StyleSheet.create({
-  game: { flex: 1, backgroundColor: "transparent" },
+  game: { flex: 1, backgroundColor: "#000" },
 });
