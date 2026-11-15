@@ -1,0 +1,8 @@
+music-loop-variations
+
+Author: obscure-music
+Source: https://opengameart.org/content/music-loop-variations
+License: Creative Commons Zero (CC0 1.0)
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Downloaded 2026-11-15. WAV originals were converted to AAC (.m4a) to save space.
