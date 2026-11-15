@@ -12,12 +12,32 @@ import { STARTER_GAMES } from "./starterGames";
 
 type CatalogEntry = { key: string; kind: "image" | "sound"; description: string; width?: number; height?: number };
 
+const ALWAYS_RELEVANT = ["coin", "jump", "hit", "hurt", "score", "win", "lose", "over", "pop", "music", "background", "powerup"];
+const STOP_WORDS = new Set(["the", "and", "with", "that", "this", "for", "you", "your", "make", "game", "add", "when", "into", "from", "more", "less", "every", "each", "tap", "can", "get", "have", "has", "its", "are", "but", "not", "all", "out", "one", "two"]);
+const stem = (word: string) => word.replace(/(ies|es|s|ing|ed)$/, "");
+const words = (text: string) => (text.toLowerCase().match(/[a-z]+/g) ?? []).filter((w) => w.length > 2 && !STOP_WORDS.has(w)).map(stem);
+
+function relevantAssets(catalog: CatalogEntry[], request: string, code: string | null) {
+  const used = new Set((code?.match(/["'][a-z0-9]+(?:-[a-z0-9]+)+["']|["'][a-z0-9]+["']/g) ?? []).map((s) => s.slice(1, -1)));
+  const wanted = new Set([...words(request), ...ALWAYS_RELEVANT.map(stem), ...[...used].flatMap((key) => words(key.replace(/-/g, " ")))]);
+  const score = (a: CatalogEntry) => (used.has(a.key) ? 1000 : words(a.key.replace(/-/g, " ") + " " + a.description).filter((w) => wanted.has(w)).length);
+  const top = (kind: CatalogEntry["kind"], limit: number) =>
+    catalog
+      .filter((a) => a.kind === kind)
+      .map((a) => ({ a, s: score(a) }))
+      .filter(({ s }) => s > 0)
+      .sort((x, y) => y.s - x.s)
+      .slice(0, limit)
+      .map(({ a }) => a);
+  return [...top("image", 150), ...top("sound", 40)];
+}
+
 function assetLibrary(catalog: CatalogEntry[]) {
   if (catalog.length === 0) return "";
   const line = (a: CatalogEntry) => `- ${a.key}: ${a.description}${a.width && a.height ? ` (${a.width}x${a.height})` : ""}`;
   return `
 
-Asset library (prefer these over emoji when they fit the theme; use only keys from this list):
+Asset library (the entries most relevant to this game, picked from a larger library; prefer them over emoji when they fit the theme, and use only keys from this list):
 Images, drawn with G.sprite(key, x, y, size):
 ${catalog.filter((a) => a.kind === "image").map(line).join("\n")}
 Sounds, played with G.sound(key):
@@ -31,6 +51,7 @@ ${SDK_DOCS}${assetLibrary(catalog)}
 Design rules:
 - Hypercasual: one-thumb controls (tap, hold, or drag), instantly understandable, 10-60 second runs, difficulty that ramps over time, satisfying feedback (G.burst, G.shake, score pops).
 - Portrait phone. Size everything from G.W, G.H and G.unit, never fixed pixels.
+- The score is drawn at the top center (around y = G.H * 0.1): don't draw your own text there. Keep title under 20 characters and startText and overText under 30.
 - Use library images, emoji and shapes as art, and library sounds for feedback; pick a cohesive color palette.
 - Keep all state in variables that start() fully resets.
 - The code must run without errors. No fetch, no new Image(), no new Audio(), no DOM access beyond drawing: load assets only through G.sprite, G.sound and G.load.
@@ -118,7 +139,7 @@ export const generate = internalAction({
       const loaded = await ctx.runQuery(internal.games.loadForGeneration, { gameId });
       if (loaded === null) return null;
       const messages: Message[] = [
-        { role: "system", content: systemPrompt(await ctx.runQuery(internal.assets.catalog, {})) },
+        { role: "system", content: systemPrompt(relevantAssets(await ctx.runQuery(internal.assets.catalog, {}), prompt, loaded.code)) },
         {
           role: "user",
           content: loaded.code
