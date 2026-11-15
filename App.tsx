@@ -1,31 +1,19 @@
 import { ConvexAuthProvider, useAuthActions } from "@convex-dev/auth/react";
-import {
-  useSignInWithUsernamePassword,
-  useSignUpWithUsernamePassword,
-} from "@convex-dev/auth/methods/username-password/react";
-import {
-  Authenticated,
-  AuthLoading,
-  ConvexReactClient,
-  Unauthenticated,
-  useMutation,
-  useQuery,
-} from "convex/react";
+import { Authenticated, AuthLoading, ConvexReactClient, Unauthenticated } from "convex/react";
 import { StatusBar } from "expo-status-bar";
-import * as SecureStore from "expo-secure-store";
 import { useState } from "react";
-import { Button, FlatList, StyleSheet, Text, TextInput, View } from "react-native";
+import { ActivityIndicator, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { api } from "./convex/_generated/api";
+import type { Id } from "./convex/_generated/dataModel";
+import { AuthForm } from "./src/AuthForm";
+import { Feed } from "./src/Feed";
+import { secureStorage } from "./src/secureStorage";
+import { Studio } from "./src/Studio";
+import { colors } from "./src/ui";
 
 const convex = new ConvexReactClient(process.env.EXPO_PUBLIC_CONVEX_URL!, {
   unsavedChangesWarning: false,
 });
-
-const secureStorage = {
-  getItem: SecureStore.getItemAsync,
-  setItem: SecureStore.setItemAsync,
-  removeItem: SecureStore.deleteItemAsync,
-};
 
 export default function App() {
   return (
@@ -38,128 +26,64 @@ export default function App() {
         isAuthenticated: api.auth.isAuthenticated,
       }}
     >
-      <View style={styles.container}>
-        <AuthLoading>
-          <Text>Loading…</Text>
-        </AuthLoading>
-        <Unauthenticated>
-          <AuthForm />
-        </Unauthenticated>
-        <Authenticated>
-          <Moments />
-        </Authenticated>
-        <StatusBar style="auto" />
-      </View>
+      <Main />
     </ConvexAuthProvider>
   );
 }
 
-function AuthForm() {
-  const signIn = useSignInWithUsernamePassword(api.auth);
-  const signUp = useSignUpWithUsernamePassword(api.auth);
-  const [mode, setMode] = useState<"signIn" | "signUp">("signIn");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const pending = signIn.pending || signUp.pending;
-
-  const submit = async () => {
-    setError(null);
-    const result =
-      mode === "signIn"
-        ? await signIn.signIn({ username, password })
-        : await signUp.signUp({ username, password });
-    if (result.status !== "complete") {
-      setError(result.userError.error);
-    }
-  };
-
-  return (
-    <View style={styles.form}>
-      <TextInput
-        style={styles.input}
-        placeholder="Username"
-        autoCapitalize="none"
-        autoComplete="username"
-        value={username}
-        onChangeText={setUsername}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        secureTextEntry
-        autoComplete={mode === "signIn" ? "current-password" : "new-password"}
-        value={password}
-        onChangeText={setPassword}
-      />
-      {error ? <Text style={styles.error}>{error}</Text> : null}
-      <Button
-        title={mode === "signIn" ? "Sign in" : "Create account"}
-        onPress={submit}
-        disabled={pending}
-      />
-      <Button
-        title={mode === "signIn" ? "Need an account? Sign up" : "Have an account? Sign in"}
-        onPress={() => setMode(mode === "signIn" ? "signUp" : "signIn")}
-      />
-    </View>
-  );
-}
-
-function Moments() {
+function Main() {
+  const [tab, setTab] = useState<"play" | "create">("play");
+  const [openGameId, setOpenGameId] = useState<Id<"games"> | null>(null);
   const { signOut } = useAuthActions();
-  const moments = useQuery(api.moments.listMine);
-  const addMoment = useMutation(api.moments.add);
-  const [text, setText] = useState("");
 
   return (
-    <View style={styles.form}>
-      <TextInput
-        style={styles.input}
-        placeholder="What's happening?"
-        value={text}
-        onChangeText={setText}
-      />
-      <Button
-        title="Add moment"
-        disabled={text.trim() === ""}
-        onPress={async () => {
-          await addMoment({ text: text.trim() });
-          setText("");
-        }}
-      />
-      <FlatList
-        data={moments ?? []}
-        keyExtractor={(moment) => moment._id}
-        renderItem={({ item }) => <Text style={styles.moment}>{item.text}</Text>}
-      />
-      <Button title="Sign out" onPress={() => void signOut()} />
-    </View>
+    <SafeAreaView style={styles.root}>
+      <StatusBar style="light" />
+      <View style={styles.flex}>
+        {tab === "play" ? (
+          <Feed
+            onRemixed={(gameId) => {
+              setOpenGameId(gameId);
+              setTab("create");
+            }}
+          />
+        ) : (
+          <>
+            <AuthLoading>
+              <ActivityIndicator style={{ marginTop: 120 }} color={colors.accent} />
+            </AuthLoading>
+            <Unauthenticated>
+              <AuthForm />
+            </Unauthenticated>
+            <Authenticated>
+              <Studio openGameId={openGameId} setOpenGameId={setOpenGameId} />
+            </Authenticated>
+          </>
+        )}
+      </View>
+      <View style={styles.tabs}>
+        {(["play", "create"] as const).map((t) => (
+          <Pressable key={t} style={styles.tab} onPress={() => setTab(t)}>
+            <Text style={[styles.tabText, tab === t && styles.tabActive]}>{t === "play" ? "Play" : "Create"}</Text>
+          </Pressable>
+        ))}
+        <Authenticated>
+          {tab === "create" ? (
+            <Pressable style={styles.tab} onPress={() => void signOut()}>
+              <Text style={styles.tabText}>Sign out</Text>
+            </Pressable>
+          ) : null}
+        </Authenticated>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  form: {
-    width: '80%',
-    gap: 8,
-    paddingVertical: 64,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 6,
-    padding: 10,
-  },
-  error: {
-    color: '#c00',
-  },
-  moment: {
-    paddingVertical: 6,
-  },
+  root: { flex: 1, backgroundColor: colors.bg },
+  flex: { flex: 1 },
+  tabs: { flexDirection: "row", borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: "#333" },
+  tab: { flex: 1, alignItems: "center", paddingVertical: 14 },
+  tabText: { color: colors.muted, fontSize: 16, fontWeight: "700" },
+  tabActive: { color: colors.text },
 });
