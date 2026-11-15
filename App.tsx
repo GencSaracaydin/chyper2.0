@@ -2,7 +2,7 @@ import { ConvexAuthProvider, useAuthActions } from "@convex-dev/auth/react";
 import { Authenticated, AuthLoading, ConvexReactClient, Unauthenticated } from "convex/react";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { ActivityIndicator, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, KeyboardAvoidingView, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { api } from "./convex/_generated/api";
 import type { Id } from "./convex/_generated/dataModel";
 import { AuthForm } from "./src/AuthForm";
@@ -37,45 +37,47 @@ function Main() {
   const { signOut } = useAuthActions();
 
   return (
-    <SafeAreaView style={styles.root}>
-      <StatusBar style="light" />
-      <View style={styles.flex}>
-        {tab === "play" ? (
-          <Feed
-            onRemixed={(gameId) => {
-              setOpenGameId(gameId);
-              setTab("create");
-            }}
-          />
-        ) : (
-          <>
-            <AuthLoading>
-              <ActivityIndicator style={{ marginTop: 120 }} color={colors.accent} />
-            </AuthLoading>
-            <Unauthenticated>
-              <AuthForm />
-            </Unauthenticated>
-            <Authenticated>
-              <Studio openGameId={openGameId} setOpenGameId={setOpenGameId} />
-            </Authenticated>
-          </>
-        )}
-      </View>
-      <View style={styles.tabs}>
-        {(["play", "create"] as const).map((t) => (
-          <Pressable key={t} style={styles.tab} onPress={() => setTab(t)}>
-            <Text style={[styles.tabText, tab === t && styles.tabActive]}>{t === "play" ? "Play" : "Create"}</Text>
-          </Pressable>
-        ))}
-        <Authenticated>
-          {tab === "create" ? (
-            <Pressable style={styles.tab} onPress={() => void signOut()}>
-              <Text style={styles.tabText}>Sign out</Text>
+    <KeyboardAvoidingView style={styles.root} behavior="padding">
+      <SafeAreaView style={styles.flex}>
+        <StatusBar style="light" />
+        <View style={styles.flex}>
+          {tab === "play" ? (
+            <Feed
+              onRemixed={(gameId) => {
+                setOpenGameId(gameId);
+                setTab("create");
+              }}
+            />
+          ) : (
+            <>
+              <AuthLoading>
+                <ActivityIndicator style={{ marginTop: 120 }} color={colors.accent} />
+              </AuthLoading>
+              <Unauthenticated>
+                <AuthForm />
+              </Unauthenticated>
+              <Authenticated>
+                <Studio openGameId={openGameId} setOpenGameId={setOpenGameId} />
+              </Authenticated>
+            </>
+          )}
+        </View>
+        <View style={styles.tabs}>
+          {(["play", "create"] as const).map((t) => (
+            <Pressable key={t} style={styles.tab} onPress={() => setTab(t)}>
+              <Text style={[styles.tabText, tab === t && styles.tabActive]}>{t === "play" ? "Play" : "Create"}</Text>
             </Pressable>
-          ) : null}
-        </Authenticated>
-      </View>
-    </SafeAreaView>
+          ))}
+          <Authenticated>
+            {tab === "create" ? (
+              <Pressable style={styles.tab} onPress={() => void signOut()}>
+                <Text style={styles.tabText}>Sign out</Text>
+              </Pressable>
+            ) : null}
+          </Authenticated>
+        </View>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 }
 

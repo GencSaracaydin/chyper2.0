@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "convex/react";
 import { useEffect, useState } from "react";
-import { ActivityIndicator, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { ActivityIndicator, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { api } from "../convex/_generated/api";
 import type { Id } from "../convex/_generated/dataModel";
 import { GameView } from "./GameView";
@@ -37,7 +37,7 @@ export function Editor({ gameId, onBack }: { gameId: Id<"games">; onBack: () => 
   };
 
   return (
-    <KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === "ios" ? "padding" : undefined}>
+    <View style={styles.flex}>
       <View style={styles.top}>
         <Pressable onPress={onBack}>
           <Text style={ui.link}>‹ Back</Text>
@@ -126,7 +126,7 @@ export function Editor({ gameId, onBack }: { gameId: Id<"games">; onBack: () => 
           </Pressable>
         </View>
       </View>
-    </KeyboardAvoidingView>
+    </View>
   );
 }
 
