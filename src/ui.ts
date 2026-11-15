@@ -9,6 +9,12 @@ export const colors = {
   danger: "#FF5C7A",
 };
 
+export function formatCount(n: number) {
+  if (n < 1000) return String(n);
+  if (n < 1_000_000) return (n / 1000).toFixed(n < 10_000 ? 1 : 0).replace(/\.0$/, "") + "K";
+  return (n / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M";
+}
+
 export const ui = StyleSheet.create({
   h1: { color: colors.text, fontSize: 24, fontWeight: "800" },
   h2: { color: colors.text, fontSize: 18, fontWeight: "700" },

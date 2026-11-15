@@ -15,6 +15,9 @@ export default defineSchema({
     remixOf: v.optional(v.id("games")),
     publishedAt: v.optional(v.number()),
     plays: v.number(),
+    visitors: v.optional(v.number()),
+    thumbnail: v.optional(v.id("_storage")),
+    thumbnailVersion: v.optional(v.id("gameVersions")),
     job: v.optional(
       v.object({
         prompt: v.string(),
@@ -46,4 +49,8 @@ export default defineSchema({
     deviceId: v.string(),
     score: v.number(),
   }).index("by_game", ["game"]),
+  visits: defineTable({
+    game: v.id("games"),
+    deviceId: v.string(),
+  }).index("by_game_device", ["game", "deviceId"]),
 });

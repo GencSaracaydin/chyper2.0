@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "convex/react";
+import { useAction, useMutation, useQuery } from "convex/react";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { api } from "../convex/_generated/api";
@@ -14,6 +14,7 @@ export function Editor({ gameId, onBack }: { gameId: Id<"games">; onBack: () => 
   const undo = useMutation(api.games.undo);
   const publish = useMutation(api.games.publish);
   const dismissError = useMutation(api.games.dismissError);
+  const saveThumbnail = useAction(api.thumbnails.save);
   const [prompt, setPrompt] = useState("");
   const [showCode, setShowCode] = useState(false);
   const [crash, setCrash] = useState<string | null>(null);
@@ -69,7 +70,15 @@ export function Editor({ gameId, onBack }: { gameId: Id<"games">; onBack: () => 
             </Text>
           </ScrollView>
         ) : game.code ? (
-          <GameView code={game.code} onMessage={(message) => message.type === "error" && setCrash(message.message)} />
+          <GameView
+            code={game.code}
+            onMessage={(message) => {
+              if (message.type === "error") setCrash(message.message);
+              if (message.type === "snapshot" && game.currentVersion && game.thumbnailVersion !== game.currentVersion) {
+                void saveThumbnail({ gameId, versionId: game.currentVersion, image: message.image });
+              }
+            }}
+          />
         ) : null}
         {working ? (
           <View style={styles.working}>
