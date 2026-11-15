@@ -32,6 +32,15 @@ export default defineSchema({
     prompt: v.string(),
     summary: v.string(),
   }).index("by_game", ["game", "number"]),
+  assets: defineTable({
+    key: v.string(),
+    kind: v.union(v.literal("image"), v.literal("sound")),
+    source: v.union(v.literal("kenney"), v.literal("fal")),
+    description: v.string(),
+    storageId: v.id("_storage"),
+    width: v.optional(v.number()),
+    height: v.optional(v.number()),
+  }).index("by_key", ["key"]),
   plays: defineTable({
     game: v.id("games"),
     deviceId: v.string(),

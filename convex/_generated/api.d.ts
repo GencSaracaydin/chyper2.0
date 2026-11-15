@@ -9,9 +9,11 @@
  */
 
 import type * as ai from "../ai.js";
+import type * as assets from "../assets.js";
 import type * as auth from "../auth.js";
 import type * as gameSdk from "../gameSdk.js";
 import type * as games from "../games.js";
+import type * as http from "../http.js";
 import type * as moments from "../moments.js";
 import type * as plays from "../plays.js";
 import type * as seed from "../seed.js";
@@ -26,9 +28,11 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   ai: typeof ai;
+  assets: typeof assets;
   auth: typeof auth;
   gameSdk: typeof gameSdk;
   games: typeof games;
+  http: typeof http;
   moments: typeof moments;
   plays: typeof plays;
   seed: typeof seed;

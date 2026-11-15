@@ -10,16 +10,30 @@ import { internalAction, type ActionCtx } from "./_generated/server";
 import { SDK_DOCS } from "./gameSdk";
 import { STARTER_GAMES } from "./starterGames";
 
-const SYSTEM_PROMPT = `You are the game engine behind a mobile app where anyone vibecodes hypercasual games by describing them. You write complete, polished, fun hypercasual games in JavaScript for our environment.
+type CatalogEntry = { key: string; kind: "image" | "sound"; description: string; width?: number; height?: number };
 
-${SDK_DOCS}
+function assetLibrary(catalog: CatalogEntry[]) {
+  if (catalog.length === 0) return "";
+  const line = (a: CatalogEntry) => `- ${a.key}: ${a.description}${a.width && a.height ? ` (${a.width}x${a.height})` : ""}`;
+  return `
+
+Asset library (prefer these over emoji when they fit the theme; use only keys from this list):
+Images, drawn with G.sprite(key, x, y, size):
+${catalog.filter((a) => a.kind === "image").map(line).join("\n")}
+Sounds, played with G.sound(key):
+${catalog.filter((a) => a.kind === "sound").map(line).join("\n")}`;
+}
+
+const systemPrompt = (catalog: CatalogEntry[]) => `You are the game engine behind a mobile app where anyone vibecodes hypercasual games by describing them. You write complete, polished, fun hypercasual games in JavaScript for our environment.
+
+${SDK_DOCS}${assetLibrary(catalog)}
 
 Design rules:
 - Hypercasual: one-thumb controls (tap, hold, or drag), instantly understandable, 10-60 second runs, difficulty that ramps over time, satisfying feedback (G.burst, G.shake, score pops).
 - Portrait phone. Size everything from G.W, G.H and G.unit, never fixed pixels.
-- Use emoji and shapes as art; pick a cohesive color palette.
+- Use library images, emoji and shapes as art, and library sounds for feedback; pick a cohesive color palette.
 - Keep all state in variables that start() fully resets.
-- The code must run without errors. No external resources, no fetch, no images, no audio files, no DOM access beyond drawing.
+- The code must run without errors. No fetch, no new Image(), no new Audio(), no DOM access beyond drawing: load assets only through G.sprite, G.sound and G.load.
 
 Example of a complete game in this environment:
 \`\`\`javascript
@@ -104,7 +118,7 @@ export const generate = internalAction({
       const loaded = await ctx.runQuery(internal.games.loadForGeneration, { gameId });
       if (loaded === null) return null;
       const messages: Message[] = [
-        { role: "system", content: SYSTEM_PROMPT },
+        { role: "system", content: systemPrompt(await ctx.runQuery(internal.assets.catalog, {})) },
         {
           role: "user",
           content: loaded.code
