@@ -34,6 +34,7 @@ export function Studio({ openGameId, setOpenGameId }: { openGameId: Id<"games"> 
 
   return (
     <FlatList
+      keyboardShouldPersistTaps="handled"
       contentContainerStyle={styles.list}
       data={games ?? []}
       keyExtractor={(game) => game._id}
