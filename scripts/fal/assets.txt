@@ -465,3 +465,577 @@ music-tropical | Tropical steel drum beach game loop
 music-epic | Epic orchestral adventure loop, heroic
 music-runner | Fast upbeat electronic endless runner loop
 music-jazz | Smooth funky jazz loop for casual games
+
+# ---- Batch 2: sets for popular hypercasual mechanics ----
+
+[sprite:flappy]
+flappy-bird-up | Round yellow bird with wings raised up, side view facing right, flapping frame 1
+flappy-bird-down | Round yellow bird with wings pushed down, side view facing right, flapping frame 2
+flappy-bird-dead | Round yellow bird with X eyes, dizzy, side view facing right
+pipe-top | Green vertical pipe hanging down from the top, opening at the bottom end, tall
+pipe-bottom | Green vertical pipe standing up from the ground, opening at the top end, tall
+pipe-cap | Green pipe opening rim piece, horizontal, front view
+ground-strip | Strip of grassy ground with dirt below, wide horizontal, tileable side view
+flappy-medal-platinum | Platinum medal with star, shiny
+
+[sprite:stacking]
+stack-slab-pink | Flat rectangular pastel pink slab block in isometric view, for tower stacking games
+stack-slab-teal | Flat rectangular pastel teal slab block in isometric view, for tower stacking games
+stack-slab-yellow | Flat rectangular pastel yellow slab block in isometric view, for tower stacking games
+stack-slab-purple | Flat rectangular pastel purple slab block in isometric view, for tower stacking games
+stack-slab-orange | Flat rectangular pastel orange slab block in isometric view, for tower stacking games
+stack-slab-blue | Flat rectangular pastel blue slab block in isometric view, for tower stacking games
+stack-base | Wide stone base pedestal for a stacking tower, isometric view
+crane-hook | Construction crane hook on a cable hanging down
+building-floor | One floor of an apartment building with windows, front view, for tower building games
+building-roof | Building rooftop floor with antenna, front view, for tower building games
+building-ground-floor | Ground floor of a building with a door and shop windows, front view
+burger-bun-top | Top burger bun with sesame seeds, side view, for food stacking games
+burger-bun-bottom | Bottom burger bun, side view
+burger-patty | Beef burger patty, side view
+burger-cheese | Slice of melted cheese, side view
+burger-lettuce | Lettuce leaf layer, side view
+burger-tomato | Tomato slices layer, side view
+pancake-single | Single fluffy pancake, side view, for stacking games
+cake-tier | Round frosted cake tier, side view, for stacking games
+jenga-block | Wooden jenga block, long rectangular
+
+[sprite:helix]
+helix-pole | Tall white vertical cylinder pole, front view
+helix-ring-segment | Colorful curved platform ring segment around a pole, slightly angled view
+helix-danger-segment | Red glowing curved danger platform segment, slightly angled view
+helix-ball | Glossy orange bouncing ball
+helix-splat | Orange paint splat mark seen from above
+bounce-ball-pink | Glossy pink bouncing ball with highlight
+bounce-ball-cyan | Glossy cyan bouncing ball with highlight
+
+[sprite:knife]
+knife-throw-steel | Steel throwing knife, pointing up, vertical
+knife-throw-gold | Golden ornate throwing knife, pointing up, vertical
+knife-throw-dagger | Fantasy dagger with jewel, pointing up, vertical
+knife-throw-cleaver | Meat cleaver, pointing up, vertical
+knife-throw-kunai | Black kunai knife, pointing up, vertical
+knife-throw-axe | Small throwing axe, blade up, vertical
+target-log | Round wooden log target, end grain seen from the front, with rings
+target-log-boss-orange | Round orange slice target, seen from the front
+target-log-boss-cheese | Round cheese wheel target, seen from the front
+target-log-boss-tire | Round tire target, seen from the front
+target-apple | Red apple bonus target
+log-chunk | Broken chunk of wood flying apart
+knife-icon-empty | Grey knife silhouette icon, pointing up, for remaining knives counter
+knife-icon-full | White knife silhouette icon, pointing up, for remaining knives counter
+
+[sprite:slicing]
+fruit-watermelon | Whole round watermelon
+fruit-watermelon-half-left | Left half of a sliced watermelon showing red flesh, cut edge facing right
+fruit-watermelon-half-right | Right half of a sliced watermelon showing red flesh, cut edge facing left
+fruit-apple-half-left | Left half of a sliced red apple showing white flesh, cut edge facing right
+fruit-apple-half-right | Right half of a sliced red apple showing white flesh, cut edge facing left
+fruit-orange-half-left | Left half of a sliced orange showing segments, cut edge facing right
+fruit-orange-half-right | Right half of a sliced orange showing segments, cut edge facing left
+fruit-banana-half-left | Left half of a sliced banana, cut edge facing right
+fruit-banana-half-right | Right half of a sliced banana, cut edge facing left
+fruit-pineapple-half-left | Left half of a sliced pineapple, cut edge facing right
+fruit-pineapple-half-right | Right half of a sliced pineapple, cut edge facing left
+fruit-coconut | Brown coconut
+fruit-coconut-half | Half coconut showing white flesh
+fruit-kiwi | Brown kiwi fruit
+fruit-kiwi-half | Sliced kiwi half showing green flesh
+fruit-peach | Round orange-pink stone fruit with a green leaf on the stem
+fruit-mango | Mango
+fruit-pear | Green pear
+fruit-dragonfruit | Pink dragon fruit
+fruit-lemon-half | Sliced lemon half
+fruit-strawberry-half | Sliced strawberry half
+juice-splat-red | Red juice splat stain
+juice-splat-orange | Orange juice splat stain
+juice-splat-yellow | Yellow juice splat stain
+juice-splat-green | Green juice splat stain
+slice-trail | White glowing blade swipe slash trail, diagonal
+slice-bomb | Black bomb with lit fuse and red glow, for slicing games to avoid
+
+[sprite:crossy]
+crossy-chicken | Blocky white chicken character, top-down three quarter view
+crossy-frog | Blocky green frog character, top-down three quarter view
+crossy-car-red | Blocky red car, side view facing right
+crossy-car-blue | Blocky blue car, side view facing right
+crossy-truck | Blocky delivery truck, side view facing right
+crossy-train | Blocky long red train, side view facing right
+crossy-log | Floating wooden log, side view, wide horizontal
+crossy-lilypad | Green lily pad floating, top-down view
+crossy-tree | Blocky green tree, three quarter view
+crossy-rock | Blocky grey rock, three quarter view
+crossy-coin | Blocky gold coin
+crossy-eagle | Swooping eagle with spread wings, top-down view
+tile-grass | Square grass ground tile, top-down view, tileable
+tile-road | Square asphalt road tile with dashed line, top-down view, tileable
+tile-water | Square blue water tile with ripples, top-down view, tileable
+tile-rail | Square railroad track tile, top-down view, tileable
+tile-sand | Square sand tile, top-down view, tileable
+tile-snow | Square snow tile, top-down view, tileable
+
+[sprite:runner]
+subway-train-front | Front view of a subway train car, colorful graffiti, for endless lane runner games
+subway-barrier | Red and white striped track barrier, front view
+subway-barrier-low | Low barrier to jump over, front view
+subway-sign-high | Overhead barrier to slide under, front view
+subway-ramp | Ramp leading up onto a train roof, front view
+hoverboard | Neon hoverboard power-up, side view
+jetpack | Red jetpack with flames, power-up
+sneakers-powerup | Super sneakers power-up with springs
+runner-coin-trail | Row of three gold coins in perspective
+lane-runner-boy | Cartoon boy running away from the viewer, back view, for lane runner games
+lane-runner-girl | Cartoon girl running away from the viewer, back view, for lane runner games
+lane-guard | Cartoon security guard chasing, back view
+temple-explorer | Cartoon explorer running away from the viewer, back view
+temple-pillar-broken | Broken ancient stone pillar obstacle, front view
+temple-fire-trap | Fire trap shooting flames from the ground, front view
+temple-gap | Gap in an ancient stone path, top-down perspective
+idol-golden | Golden ancient idol statue
+
+[sprite:jumper]
+jumper-player | Cute green alien with suction feet, jumping pose, front view, for vertical jumping games
+jumper-player-left | Cute green alien jumping, side view facing left
+jumper-platform-green | Short green floating platform, wide horizontal
+jumper-platform-blue | Short blue moving platform, wide horizontal
+jumper-platform-brown-broken | Short brown cracked breaking platform, wide horizontal
+jumper-platform-white | Short white disappearing cloud platform, wide horizontal
+jumper-platform-spring | Short green platform with a coiled spring on top
+jumper-propeller-hat | Propeller beanie hat power-up
+jumper-rocket-pack | Rocket backpack power-up with flames
+jumper-monster | Fuzzy blue monster enemy with many eyes, front view
+jumper-black-hole | Swirling black hole hazard
+
+[sprite:colors]
+color-ring-4 | Ring split into four colored quarters cyan, purple, pink and yellow, front view, for color switch games
+color-switcher | Small round orb divided into four colors cyan, purple, pink and yellow
+color-ball-cyan | Glossy cyan ball
+color-ball-purple | Glossy purple ball
+color-ball-pink | Glossy pink ball
+color-ball-yellow | Glossy yellow ball
+color-bar-4 | Horizontal bar split into four colors cyan, purple, pink and yellow
+color-cross-4 | Rotating cross with four colored arms cyan, purple, pink and yellow
+color-star | White star collectible with glow
+
+[sprite:bubbles]
+bubble-red | Glossy red bubble ball for bubble shooter games
+bubble-blue | Glossy blue bubble ball for bubble shooter games
+bubble-green | Glossy green bubble ball for bubble shooter games
+bubble-yellow | Glossy yellow bubble ball for bubble shooter games
+bubble-purple | Glossy purple bubble ball for bubble shooter games
+bubble-orange | Glossy orange bubble ball for bubble shooter games
+bubble-rainbow | Glossy rainbow wildcard bubble ball
+bubble-bomb | Bubble with a bomb inside
+bubble-cannon | Bubble shooter cannon launcher pointing up
+aim-arrow | Dotted aiming arrow pointing up
+
+[sprite:match3]
+candy-red-round | Red round jelly candy for match-3 games
+candy-orange-drop | Orange teardrop jelly candy for match-3 games
+candy-yellow-lemon | Yellow lemon drop candy for match-3 games
+candy-green-square | Green square jelly candy for match-3 games
+candy-blue-oval | Blue oval jelly candy for match-3 games
+candy-purple-cluster | Purple cluster candy for match-3 games
+candy-striped | Red and white striped special candy
+candy-wrapped | Wrapped special candy bomb
+candy-color-bomb | Chocolate ball covered in sprinkles, color bomb special candy
+gem-match-red | Square cut red gem for match-3 games
+gem-match-orange | Hexagonal orange gem for match-3 games
+gem-match-yellow | Round yellow gem for match-3 games
+gem-match-green | Emerald cut green gem for match-3 games
+gem-match-blue | Diamond shaped blue gem for match-3 games
+gem-match-purple | Triangle purple gem for match-3 games
+gem-match-white | Round white pearl for match-3 games
+match-tile-board | Single square board cell tile, light purple, slightly inset
+jelly-blocker | Pink jelly blocker tile covering a board cell
+ice-blocker | Frozen ice blocker tile covering a board cell
+chain-blocker | Metal chains locking a board cell
+
+[sprite:sorting]
+sort-tube-empty | Empty clear glass test tube standing upright, front view, for ball sort and water sort games
+sort-flask-empty | Empty clear glass flask with long neck standing upright, front view, for water sort games
+sort-ball-red | Glossy solid red ball for sorting games
+sort-ball-blue | Glossy solid blue ball for sorting games
+sort-ball-green | Glossy solid green ball for sorting games
+sort-ball-yellow | Glossy solid yellow ball for sorting games
+sort-ball-purple | Glossy solid purple ball for sorting games
+sort-ball-orange | Glossy solid orange ball for sorting games
+sort-ball-pink | Glossy solid pink ball for sorting games
+sort-ball-cyan | Glossy solid cyan ball for sorting games
+hexa-tile-red | Thin red hexagon tile, slightly 3D, for hexa sort games
+hexa-tile-blue | Thin blue hexagon tile, slightly 3D, for hexa sort games
+hexa-tile-green | Thin green hexagon tile, slightly 3D, for hexa sort games
+hexa-tile-yellow | Thin yellow hexagon tile, slightly 3D, for hexa sort games
+hexa-tile-purple | Thin purple hexagon tile, slightly 3D, for hexa sort games
+hexa-board-cell | Empty grey hexagon board slot
+nut-red | Red hexagonal nut seen from above, for nut sort games
+nut-blue | Blue hexagonal nut seen from above, for nut sort games
+nut-yellow | Yellow hexagonal nut seen from above, for nut sort games
+nut-green | Green hexagonal nut seen from above, for nut sort games
+bolt-post | Vertical metal bolt post, front view, for stacking nuts
+
+[sprite:screws]
+screw-head | Silver screw head with a cross slot, top-down view, for screw puzzle games
+screw-head-gold | Gold screw head with a cross slot, top-down view
+screw-hole | Empty round screw hole in a board, top-down view
+wood-plank-screw | Long wooden plank bar with round holes at both ends, top-down view
+metal-bar-screw | Colored translucent plastic bar with holes at both ends, top-down view
+screw-box-red | Small red box with three empty screw slots, top-down view
+screw-box-blue | Small blue box with three empty screw slots, top-down view
+pin-pull | Golden pull pin rod with round handle, horizontal, for pin puzzle games
+pin-pull-vertical | Golden pull pin rod with round handle, vertical
+
+[sprite:tilematch]
+tm-tile-blank | Blank cream colored square tile with thick bottom edge, for tile match games
+tm-tile-apple | Square cream tile with a red apple icon, for tile match games
+tm-tile-carrot | Square cream tile with a carrot icon, for tile match games
+tm-tile-grapes | Square cream tile with a grapes icon, for tile match games
+tm-tile-cherry | Square cream tile with a cherry icon, for tile match games
+tm-tile-flower | Square cream tile with a pink flower icon, for tile match games
+tm-tile-leaf | Square cream tile with a green leaf icon, for tile match games
+tm-tile-mushroom | Square cream tile with a mushroom icon, for tile match games
+tm-tile-corn | Square cream tile with a corn icon, for tile match games
+tm-tile-bell | Square cream tile with a golden bell icon, for tile match games
+tm-tile-heart | Square cream tile with a red heart icon, for tile match games
+tm-tile-star | Square cream tile with a gold star icon, for tile match games
+tm-tile-sun | Square cream tile with a sun icon, for tile match games
+tm-tile-moon | Square cream tile with a crescent moon icon, for tile match games
+tm-tile-fish | Square cream tile with a fish icon, for tile match games
+tm-tile-butterfly | Square cream tile with a butterfly icon, for tile match games
+tm-tray | Long horizontal wooden tray with seven slots for collected tiles
+
+[sprite:crowd]
+crowd-stickman-blue | Small round blue stickman figure running, front view, for crowd runner games
+crowd-stickman-red | Small round red stickman figure running, front view, for crowd runner games
+crowd-stickman-yellow | Small round yellow stickman figure running, front view
+crowd-stickman-green | Small round green stickman figure running, front view
+crowd-giant-boss | Giant red stickman boss, front view
+crowd-gate-blue | Blank translucent blue gate panel between two posts, front view, no text
+crowd-gate-red | Blank translucent red gate panel between two posts, front view, no text
+crowd-castle | Small castle at the end of a level, front view
+crowd-saw-trap | Spinning saw blade trap on a track
+crowd-hammer-trap | Giant swinging hammer trap
+bridge-plank-red | Red stair plank brick, small rectangular, for bridge race games
+bridge-plank-blue | Blue stair plank brick, small rectangular, for bridge race games
+
+[sprite:archery]
+bow-drawn | Wooden bow drawn back with an arrow nocked, side view facing right
+arrow-flying | Arrow with red fletching flying, pointing right
+target-board | Round archery target on a wooden stand, front view
+apple-on-head-target | Red apple with an arrow stuck through it
+balloon-blue | Blue balloon with string
+balloon-green | Green balloon with string
+balloon-yellow | Yellow balloon with string
+balloon-purple | Purple balloon with string
+stickman-archer | Simple black stick figure with a round head drawing a bow, minimal stickman style, side view facing right
+stickman-enemy | Red stickman enemy standing, side view facing left
+stickman-ragdoll | Stickman flopping in ragdoll pose
+
+[sprite:ballgames]
+basket-hoop-side | Basketball hoop with net and backboard, side view, backboard on the right
+basket-net | Basketball net only, front view
+goalkeeper | Cartoon goalkeeper in gloves, front view, ready stance
+soccer-goal-wide | Wide soccer goal with net, front view
+soccer-wall-defender | Cartoon soccer defender standing in a wall, front view
+golf-hole-flag | Golf hole with a red flag on a pole, slightly angled view
+golf-club | Golf club putter
+mini-golf-windmill | Mini golf windmill obstacle
+pinball-flipper | Pinball flipper paddle, red, horizontal
+pinball-bumper | Round pinball bumper, glowing
+pool-cue | Wooden pool cue stick, horizontal
+pool-ball-1 | Yellow solid pool ball number 1
+pool-ball-cue | White cue ball
+bowling-lane | Wooden bowling lane, top-down view, vertical
+air-hockey-mallet | Red air hockey mallet, top-down view
+air-hockey-puck | Yellow air hockey puck, top-down view
+paddle-pong | White glowing pong paddle, vertical rectangle
+cup-pong | Red plastic party cup, front view
+bottle-flip | Plastic water bottle half filled, upright
+
+[sprite:breaker]
+brick-red | Glossy red rectangular brick for brick breaker games
+brick-orange | Glossy orange rectangular brick for brick breaker games
+brick-yellow | Glossy yellow rectangular brick for brick breaker games
+brick-green | Glossy green rectangular brick for brick breaker games
+brick-blue | Glossy blue rectangular brick for brick breaker games
+brick-purple | Glossy purple rectangular brick for brick breaker games
+brick-steel | Unbreakable steel rectangular brick
+brick-cracked | Cracked damaged rectangular brick
+breaker-paddle | Sleek horizontal paddle with glowing ends for brick breaker games
+breaker-ball | Small glowing white ball
+ball-blast-cannon | Cartoon cannon on wheels pointing straight up, for ball blast games
+ball-blast-rock | Round purple rock boulder with cracks, to be shot apart
+
+[sprite:snake]
+snake-head | Green cartoon snake head with tongue, top-down view, facing up
+snake-body | Green snake body segment, round, top-down view
+snake-tail | Green snake tail tip, top-down view, pointing down
+worm-head | Pink glowing worm head with eyes, top-down view, for slither games
+worm-segment | Simple glossy pink circle, a round worm body segment, seen from above
+food-orb | Small glowing food orb pellet
+snake-block | Rounded square block for snake versus block games, orange
+
+[sprite:parking]
+parking-car-red | Red car, top-down view, pointing up, for parking jam games
+parking-car-blue | Blue car, top-down view, pointing up, for parking jam games
+parking-car-green | Green car, top-down view, pointing up
+parking-car-yellow | Yellow car, top-down view, pointing up
+parking-car-purple | Purple car, top-down view, pointing up
+parking-car-orange | Orange car, top-down view, pointing up
+parking-bus | Long bus, top-down view, pointing up
+parking-van | White van, top-down view, pointing up
+parking-truck | Long truck, top-down view, pointing up
+parking-spot | Parking spot with white lines, top-down view
+traffic-light | Traffic light with red yellow green
+road-arrow | White road arrow marking pointing up, top-down view
+road-tile-straight | Straight road tile, top-down view, vertical
+road-tile-corner | Road corner tile turning right, top-down view
+road-tile-cross | Road intersection crossroads tile, top-down view
+gas-can | Red gas can fuel power-up
+
+[sprite:hillclimb]
+jeep-side | Cartoon jeep with big wheels, side view facing right
+jeep-wheel | Big off-road tire wheel, side view
+dirt-bike | Dirt bike with rider, side view facing right
+fuel-gauge | Fuel gauge dial icon
+hill-ground | Rolling grassy hill terrain chunk with dirt, side view, wide horizontal
+stunt-ramp | Wooden stunt ramp, side view rising to the right
+
+[sprite:fishing]
+fishing-hook | Fishing hook on a line
+fishing-rod | Fishing rod with reel
+fish-small-blue | Small blue fish, side view facing right
+fish-tuna | Big tuna fish, side view facing right
+fish-yellow-tang | Yellow tang fish, side view facing right
+fish-puffer | Puffer fish puffed up
+fish-angler | Anglerfish with glowing lure, side view facing right
+fish-swordfish | Swordfish, side view facing right
+fish-golden | Golden fish, side view facing right
+old-boot | Old boot junk catch
+seaweed | Green seaweed strand
+treasure-pearl | Open clam shell with pearl
+whale | Blue whale, side view facing right
+turtle | Sea turtle swimming, side view facing right
+
+[sprite:merge]
+merge-egg | Cute spotted egg, merge level 1
+merge-chick | Cute chick hatchling, merge level 2
+merge-hen | Cute hen, merge level 3
+merge-sprout | Tiny green sprout in soil, merge level 1
+merge-sapling | Small sapling plant, merge level 2
+merge-tree-fruit | Small tree with fruit, merge level 3
+merge-pebble | Small grey pebble, merge level 1
+merge-stone-brick | Stone brick, merge level 2
+merge-house | Small cottage house, merge level 3
+merge-castle | Castle, merge level 4
+merge-cherry | Cherry, fruit merge level 1
+merge-strawberry | Strawberry, fruit merge level 2
+merge-grape | Grape, fruit merge level 3
+merge-orange | Orange, fruit merge level 4
+merge-apple | Apple, fruit merge level 5
+merge-pear | Pear, fruit merge level 6
+merge-peach | Peach, fruit merge level 7
+merge-pineapple | Pineapple, fruit merge level 8
+merge-melon | Melon, fruit merge level 9
+merge-watermelon | Watermelon, fruit merge level 10
+planet-mercury | Small grey planet, planet merge level 1
+planet-mars | Red planet, planet merge level 2
+planet-earth | Blue and green earth planet, planet merge level 3
+planet-saturn | Saturn with rings, planet merge level 4
+planet-jupiter | Large striped orange planet, planet merge level 5
+planet-sun | Glowing sun star, planet merge level 6
+
+[sprite:casino]
+plinko-peg | Small round white glowing peg
+plinko-ball | Glossy pink ball for plinko games
+plinko-bucket | Small cup bucket slot at the bottom of a plinko board
+slot-cherry | Slot machine cherry symbol
+slot-seven | Slot machine red lucky seven symbol
+slot-bar | Slot machine BAR gold bar symbol
+slot-bell | Slot machine golden bell symbol
+slot-diamond | Slot machine blue diamond symbol
+slot-lemon | Slot machine lemon symbol
+slot-watermelon | Slot machine watermelon symbol
+slot-horseshoe | Slot machine lucky horseshoe symbol
+slot-clover | Slot machine four leaf clover symbol
+coin-pusher-coin | Thick gold coin seen at an angle
+prize-wheel | Colorful spinning prize wheel with eight segments, no text
+wheel-pointer | Red triangular pointer for a prize wheel
+scratch-card | Silver scratch card
+claw-machine-claw | Metal crane claw grabber
+lucky-chest | Glowing golden lucky chest
+
+[sprite:clicker]
+cookie-big | Giant chocolate chip cookie for clicker games
+gold-ore | Chunk of gold ore in rock
+coin-pile | Big pile of gold coins
+cash-stack | Stack of green dollar bills
+factory | Small cartoon factory building with smokestack
+upgrade-arrow | Green upward upgrade arrow
+pickaxe | Pickaxe tool
+gem-ore | Rock with embedded purple gems
+piggy-bank | Pink piggy bank
+
+[sprite:smash]
+glass-pane | Clear glass pane panel, front view
+glass-shard | Sharp glass shard piece
+smash-hammer | Big cartoon wooden mallet, for whack-a-mole games
+mole-hole | Dirt hole in grass, front view
+vase-breakable | Blue ceramic vase
+watermelon-target | Watermelon target on a stand
+dummy-target | Training dummy target, straw and burlap
+piano-tile-black | Tall black piano tile rectangle with rounded corners
+piano-tile-start | Tall blue piano tile rectangle with rounded corners
+
+[sprite:hookswing]
+grapple-hook | Grappling hook anchor point, round with a ring
+rope-segment | Short rope segment, vertical
+swing-ring | Golden ring anchor to swing from
+stickman-swing | Stickman hanging from a rope with one arm, side view
+candy-on-rope | Wrapped candy hanging from a rope
+cute-monster-mouth | Small green round monster with a big open mouth waiting for candy, front view
+air-cushion | Air cushion pump puffing air
+
+[sprite:shooter]
+space-player-ship | Sleek white and blue space fighter ship, top-down view, pointing up, for vertical shooter games
+space-enemy-small | Small red alien fighter, top-down view, pointing down
+space-enemy-medium | Medium green alien fighter, top-down view, pointing down
+space-enemy-kamikaze | Spiky orange alien kamikaze drone, top-down view, pointing down
+space-boss-crab | Huge purple alien crab boss ship, top-down view, pointing down
+space-bullet-player | Short blue energy bullet, vertical
+space-bullet-enemy | Small round red energy ball bullet
+space-powerup-weapon | Weapon upgrade power-up capsule
+space-powerup-health | Health repair power-up capsule
+space-mine | Floating red spiked space mine
+space-station | Small orbital space station
+tank-player | Green tank, top-down view, turret pointing up
+tank-enemy | Red tank, top-down view, turret pointing down
+turret | Rotating gun turret, top-down view, barrel pointing up
+zombie-topdown | Green zombie seen from above, walking up
+soldier-topdown | Soldier with a rifle seen from above, facing up
+survivor-hero | Cartoon hero with a gun, front view, for survivor games
+xp-gem-blue | Small blue experience crystal
+xp-gem-green | Small green experience crystal
+
+[sprite:drawing]
+pencil | Yellow pencil drawing tool
+eraser | Pink eraser
+paint-brush | Paint brush with color
+ink-line-drop | Black ink drop
+star-outline-gold | Gold star outline for level rating
+level-node-locked | Round level map node with a padlock
+level-node-open | Round glowing level map node, no text
+level-node-done | Round level map node with a gold check
+
+[background]
+bg-flappy-city | Daytime sky with a simple pale city silhouette and green bushes at the bottom, for flappy games
+bg-stack-gradient | Soft pastel gradient from pink to light blue, minimal, for stacking games
+bg-helix-sky | Soft gradient sky in bright cyan, minimal and clean, for helix tower games
+bg-knife-dark | Dark moody wooden backdrop with a subtle vignette, minimal, for knife throwing games
+bg-dojo-wood | Wooden dojo wall backdrop with bamboo, for fruit slicing games
+bg-subway-tracks | Perspective view of three subway train tracks running away into the distance with a graffiti wall, for lane runner games
+bg-temple-path | Perspective view of an ancient stone path through the jungle running away into the distance
+bg-jumper-paper | Graph paper notebook background with light grid lines, minimal
+bg-color-dark | Very dark navy background, minimal, almost flat, for color matching games
+bg-bubble-sky | Light dreamy sky with soft bokeh circles, for bubble shooter games
+bg-match3-candy | Pastel candy kingdom with sweets in soft focus, for match-3 games
+bg-sort-lab | Soft blurred laboratory shelf backdrop, light colors, for sorting games
+bg-wood-table | Top-down view of a warm wooden table surface
+bg-crowd-track | Perspective view of a long blue runway track over water, for crowd runner games
+bg-basketball-court | Indoor basketball court with stands, front view toward the hoop
+bg-soccer-stadium | Soccer stadium seen from the penalty spot looking at the goal
+bg-parking-lot | Top-down view of an empty parking lot with grey asphalt
+bg-hill-countryside | Countryside with rolling green hills under a blue sky, side view, for hill climbing games
+bg-ocean-deep | Deep ocean gradient from light blue at the top to dark blue at the bottom with light rays, for fishing games
+bg-merge-box | Light warm wooden box interior seen from the front, for fruit merge games
+bg-casino-felt | Green casino felt table surface with subtle pattern
+bg-plinko-neon | Dark purple neon arcade backdrop with glowing lights
+bg-space-shooter | Dark space with stars and a faint blue nebula, vertical, minimal, for space shooter games
+bg-zombie-ground | Top-down view of cracked dirt ground with patches of grass, for survivor games
+bg-level-map | Winding path level map through green hills and forests, top-down, no nodes or text
+bg-piano-white | Completely plain clean white background divided into four equal vertical lanes by thin faint grey lines, nothing else
+bg-archery-field | Grassy archery field with distant trees under blue sky
+bg-mini-golf | Top-down view of a mini golf green course with borders
+bg-aquarium | Bright aquarium tank interior with plants and pebbles
+bg-playground | Sunny park playground with trees, side view
+
+[sfx]
+sfx-flap-wing | Single quick wing flap whoosh for a flappy bird game | 0.3
+sfx-score-point | Short bright point scored ding | 0.4
+sfx-stack-perfect | Satisfying perfect placement chime with sparkle | 0.6
+sfx-stack-chop | Block edge chopped off and falling | 0.5
+sfx-helix-bounce | Soft bouncy ball tap on a platform | 0.3
+sfx-helix-smash | Platform shattering into pieces | 0.6
+sfx-knife-throw | Knife throw whoosh | 0.3
+sfx-knife-thunk | Knife sticking into wood thunk | 0.4
+sfx-knife-clang | Knife hitting another knife metal clang | 0.5
+sfx-log-break | Wooden log bursting apart | 0.8
+sfx-slice | Sharp blade slicing through fruit with juicy squish | 0.4
+sfx-slice-combo | Fast multiple blade slices | 0.6
+sfx-hop | Tiny cartoon hop | 0.25
+sfx-car-pass | Car passing by quickly | 0.8
+sfx-train-horn | Train horn blast | 1.2
+sfx-water-plop | Something falling into water plop | 0.5
+sfx-lane-switch | Quick swipe whoosh for switching lanes | 0.3
+sfx-roll-slide | Character sliding on the ground | 0.5
+sfx-color-switch | Magical color change shimmer | 0.5
+sfx-bubble-shoot | Bubble launched from a cannon | 0.3
+sfx-bubble-burst | Several bubbles popping in a cluster | 0.6
+sfx-match-3 | Candy match pop chime | 0.5
+sfx-cascade | Rising cascade of sparkly chimes for a big combo | 1.2
+sfx-ball-drop-tube | Glass ball dropping into a glass tube clink | 0.4
+sfx-pour-liquid | Liquid pouring from a flask | 1.0
+sfx-screw | Screw unscrewing ratchet | 0.5
+sfx-tile-pick | Wooden tile picked up click | 0.25
+sfx-tile-match | Three tiles matched and cleared pop | 0.5
+sfx-crowd-add | Crowd of small people multiplying pops | 0.6
+sfx-crowd-lose | Crowd of small people falling off squeaks | 0.6
+sfx-bow-draw | Bow string drawn back creak | 0.6
+sfx-arrow-hit | Arrow hitting a target thunk | 0.4
+sfx-swish | Basketball swish through the net | 0.6
+sfx-rim-hit | Basketball hitting the rim | 0.4
+sfx-ball-kick | Soccer ball kick | 0.3
+sfx-goal-cheer | Stadium crowd cheering for a goal | 2.0
+sfx-whistle | Referee whistle | 0.7
+sfx-paddle-hit | Ball bouncing off a paddle blip | 0.2
+sfx-brick-break | Brick breaking in an arcade brick breaker game | 0.3
+sfx-snake-eat | Snake eating a pellet gulp | 0.3
+sfx-car-unlock | Car door unlock beep | 0.4
+sfx-car-drive-off | Car driving off quickly | 1.0
+sfx-tire-screech | Car tire screeching | 1.0
+sfx-reel | Fishing reel spinning | 1.0
+sfx-fish-catch | Fish caught splash with success | 0.8
+sfx-merge | Two items merging into one with a pop and sparkle | 0.6
+sfx-plinko-peg | Ball hitting a peg tick | 0.2
+sfx-slot-spin | Slot machine reels spinning | 1.5
+sfx-jackpot | Slot machine jackpot win with coins | 2.5
+sfx-wheel-tick | Prize wheel tick | 0.15
+sfx-coin-shower | Lots of coins showering down | 1.5
+sfx-click-cookie | Satisfying soft crunch click for a clicker game | 0.25
+sfx-glass-smash | Big glass pane smashing | 1.0
+sfx-whack | Mallet whack bonk | 0.3
+sfx-piano-c | Single piano note C | 0.8
+sfx-piano-e | Single piano note E | 0.8
+sfx-piano-g | Single piano note G | 0.8
+sfx-rope-swing | Rope swinging whoosh | 0.5
+sfx-rope-cut | Rope snapping cut | 0.4
+sfx-zombie-hit | Zombie hit squelch | 0.4
+sfx-xp-pickup | Tiny crystal pickup blip | 0.2
+sfx-heartbeat | Tense heartbeat | 1.5
+sfx-near-miss | Close call whoosh | 0.5
+sfx-new-best | New high score celebration jingle | 2.0
+sfx-star-1 | Single star earned chime, low | 0.5
+sfx-star-2 | Single star earned chime, middle | 0.5
+sfx-star-3 | Single star earned chime, high and triumphant | 0.7
+sfx-countdown-3-2-1 | Three countdown beeps followed by a higher go beep | 3.0
+
+[music]
+music-hyper-pop | Bouncy hyper pop loop for a fast mobile arcade game, bright synths
+music-puzzle-calm | Calm soft piano and pads loop for relaxing puzzle and sorting games
+music-candy | Sweet playful loop with bells and pizzicato strings for match-3 games
+music-race | High energy racing loop with electric guitar and drums
+music-casino | Upbeat lounge casino loop with brass and swing rhythm
+music-ninja | Fast Japanese-inspired loop with taiko drums and shamisen for slicing games
+music-ocean | Breezy relaxing ocean loop with marimba for fishing games
+music-funky | Funky bass groove loop for idle and clicker games
+
