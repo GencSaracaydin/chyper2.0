@@ -1,49 +1,99 @@
+/// <reference types="node" />
+"use node";
+
 import { getServiceToken } from "convex/server";
 import { v } from "convex/values";
+import { Script } from "node:vm";
 import { internal } from "./_generated/api";
-import { internalAction } from "./_generated/server";
-import { KNOBS, SHAPES, TEMPLATE_INFO, TEMPLATES, sanitizeConfig, type GameConfig } from "./gameConfig";
+import type { Id } from "./_generated/dataModel";
+import { internalAction, type ActionCtx } from "./_generated/server";
+import { SDK_DOCS } from "./gameSdk";
+import { STARTER_GAMES } from "./starterGames";
 
-const SYSTEM_PROMPT = `You design hypercasual mobile games by writing a JSON config for one of five ready-made game templates. You never write code.
+const SYSTEM_PROMPT = `You are the game engine behind a mobile app where anyone vibecodes hypercasual games by describing them. You write complete, polished, fun hypercasual games in JavaScript for our environment.
 
-Templates:
-${TEMPLATES.map((t) => `- ${t}: ${TEMPLATE_INFO[t]}`).join("\n")}
+${SDK_DOCS}
 
-Config fields:
-- template: one of ${TEMPLATES.join(", ")}
-- title: short catchy game name (max 32 chars)
-- colors: { background, accent, text, obstacle } as #RRGGBB hex; keep text readable on background
-- player, obstacle, collectible: each a single emoji, or one of the shapes ${SHAPES.join(", ")}; collectible may be "" for none
-- numeric knobs, 1 is the default:
-${KNOBS}
-- startText, overText: short screen texts (max 40 chars)
+Design rules:
+- Hypercasual: one-thumb controls (tap, hold, or drag), instantly understandable, 10-60 second runs, difficulty that ramps over time, satisfying feedback (G.burst, G.shake, score pops).
+- Portrait phone. Size everything from G.W, G.H and G.unit, never fixed pixels.
+- Use emoji and shapes as art; pick a cohesive color palette.
+- Keep all state in variables that start() fully resets.
+- The code must run without errors. No external resources, no fetch, no images, no audio files, no DOM access beyond drawing.
 
-Reply with only a JSON object: {"config": {...full config...}, "summary": "one short sentence telling the player what you made or changed"}.`;
+Example of a complete game in this environment:
+\`\`\`javascript
+${STARTER_GAMES[1].code}
+\`\`\`
 
-async function complete(messages: { role: string; content: string }[]) {
+Reply in exactly this format and nothing else:
+TITLE: <short catchy game name>
+SUMMARY: <one short sentence telling the creator what you built or changed>
+\`\`\`javascript
+<the complete game code>
+\`\`\``;
+
+type Message = { role: "system" | "user" | "assistant"; content: string };
+
+async function stream(messages: Message[], onProgress: (chars: number) => Promise<void>) {
   const ownKey = process.env.AI_API_KEY;
   const baseUrl = ownKey ? (process.env.AI_BASE_URL ?? "https://api.openai.com/v1") : "https://ai-gateway.convex.dev/v1";
   const token = ownKey ?? (await getServiceToken("ai-gateway"));
-  const model = process.env.AI_MODEL ?? (ownKey ? "gpt-4o-mini" : "openai/gpt-4o-mini");
+  const model = process.env.AI_MODEL ?? (ownKey ? "gpt-4.1" : "anthropic/claude-sonnet-4.5");
   const response = await fetch(`${baseUrl}/chat/completions`, {
     method: "POST",
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ model, messages, temperature: 0.8 }),
+    body: JSON.stringify({ model, messages, max_tokens: 12000, stream: true }),
   });
-  if (!response.ok) throw new Error(`AI request failed (${response.status}): ${(await response.text()).slice(0, 300)}`);
-  const body = await response.json();
-  return String(body.choices?.[0]?.message?.content ?? "");
+  if (!response.ok || !response.body) {
+    throw new Error(`AI request failed (${response.status}): ${(await response.text()).slice(0, 300)}`);
+  }
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let text = "";
+  let lastReport = Date.now();
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split("\n");
+    buffer = lines.pop() ?? "";
+    for (const line of lines) {
+      if (!line.startsWith("data:")) continue;
+      const data = line.slice(5).trim();
+      if (data === "" || data === "[DONE]") continue;
+      try {
+        text += JSON.parse(data).choices?.[0]?.delta?.content ?? "";
+      } catch {}
+    }
+    if (Date.now() - lastReport > 1500) {
+      lastReport = Date.now();
+      await onProgress(text.length);
+    }
+  }
+  return text;
 }
 
-function parseReply(text: string): { config: GameConfig; summary: string } {
-  const start = text.indexOf("{");
-  const end = text.lastIndexOf("}");
-  if (start === -1 || end <= start) throw new Error("The AI did not return a game config");
-  const parsed = JSON.parse(text.slice(start, end + 1));
-  return {
-    config: sanitizeConfig(parsed.config ?? parsed),
-    summary: typeof parsed.summary === "string" ? parsed.summary.slice(0, 200) : "Updated your game.",
-  };
+function parseReply(text: string) {
+  const code = text.match(/```(?:javascript|js)?\s*\n([\s\S]*?)```/)?.[1]?.trim();
+  if (!code) throw new Error("The AI did not return any game code");
+  const title = text.match(/^TITLE:\s*(.+)$/m)?.[1]?.trim().slice(0, 40) || "Untitled game";
+  const summary = text.match(/^SUMMARY:\s*(.+)$/m)?.[1]?.trim().slice(0, 240) || "Updated your game.";
+  return { code, title, summary };
+}
+
+function syntaxError(code: string): string | null {
+  try {
+    new Script(code);
+    return null;
+  } catch (error) {
+    return error instanceof Error ? error.message : String(error);
+  }
+}
+
+async function setStage(ctx: ActionCtx, gameId: Id<"games">, stage: string, error?: string) {
+  await ctx.runMutation(internal.games.setStage, { gameId, stage, error });
 }
 
 export const generate = internalAction({
@@ -53,23 +103,34 @@ export const generate = internalAction({
     try {
       const loaded = await ctx.runQuery(internal.games.loadForGeneration, { gameId });
       if (loaded === null) return null;
-      const request = loaded.config
-        ? `Current game config:\n${JSON.stringify(loaded.config)}\n\nChange request: ${prompt}\n\nApply the change and keep everything else the same. Only switch template if the request clearly asks for a different kind of game.`
-        : `Game idea: ${prompt}\n\nPick the template that fits best and design the full config.`;
-      await ctx.runMutation(internal.games.setStage, { gameId, stage: loaded.config ? "Applying your change" : "Designing your game" });
-      const { config, summary } = parseReply(
-        await complete([
-          { role: "system", content: SYSTEM_PROMPT },
-          { role: "user", content: request },
-        ]),
-      );
-      await ctx.runMutation(internal.games.saveVersion, { gameId, config, prompt, summary });
+      const messages: Message[] = [
+        { role: "system", content: SYSTEM_PROMPT },
+        {
+          role: "user",
+          content: loaded.code
+            ? `Here is the current game:\n\`\`\`javascript\n${loaded.code}\n\`\`\`\n\nChange request: ${prompt}\n\nReturn the complete updated game. Keep everything the creator didn't ask to change.`
+            : `Build this game: ${prompt}`,
+        },
+      ];
+      const verb = loaded.code ? "Updating your game" : "Building your game";
+      await setStage(ctx, gameId, verb);
+      let reply = await stream(messages, (chars) => setStage(ctx, gameId, `${verb} · ${Math.round(chars / 40)} lines`));
+      let result = parseReply(reply);
+      const error = syntaxError(result.code);
+      if (error !== null) {
+        await setStage(ctx, gameId, "Fixing a bug");
+        messages.push(
+          { role: "assistant", content: reply },
+          { role: "user", content: `That code has a syntax error: ${error}. Return the complete fixed game in the same format.` },
+        );
+        reply = await stream(messages, (chars) => setStage(ctx, gameId, `Fixing a bug · ${Math.round(chars / 40)} lines`));
+        result = parseReply(reply);
+        const stillBroken = syntaxError(result.code);
+        if (stillBroken !== null) throw new Error("The generated code has a syntax error: " + stillBroken);
+      }
+      await ctx.runMutation(internal.games.saveVersion, { gameId, prompt, ...result });
     } catch (error) {
-      await ctx.runMutation(internal.games.setStage, {
-        gameId,
-        stage: "Failed",
-        error: error instanceof Error ? error.message : String(error),
-      });
+      await setStage(ctx, gameId, "Failed", error instanceof Error ? error.message : String(error));
     }
     return null;
   },

@@ -10,11 +10,12 @@
 
 import type * as ai from "../ai.js";
 import type * as auth from "../auth.js";
-import type * as gameConfig from "../gameConfig.js";
+import type * as gameSdk from "../gameSdk.js";
 import type * as games from "../games.js";
 import type * as moments from "../moments.js";
 import type * as plays from "../plays.js";
 import type * as seed from "../seed.js";
+import type * as starterGames from "../starterGames.js";
 import type * as users from "../users.js";
 
 import type {
@@ -26,11 +27,12 @@ import type {
 declare const fullApi: ApiFromModules<{
   ai: typeof ai;
   auth: typeof auth;
-  gameConfig: typeof gameConfig;
+  gameSdk: typeof gameSdk;
   games: typeof games;
   moments: typeof moments;
   plays: typeof plays;
   seed: typeof seed;
+  starterGames: typeof starterGames;
   users: typeof users;
 }>;
 

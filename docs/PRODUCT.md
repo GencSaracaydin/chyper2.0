@@ -16,15 +16,15 @@ A mobile app where anyone can **vibecode** a hypercasual game. You describe the 
 |---|---|
 | Who creates | Average users, not just developers, working inside the mobile app. Dictation (the keyboard mic) plus one-tap tweak chips make typing on a phone bearable. |
 | Game scope | Hypercasual only, 2D, portrait, one-tap controls. |
-| How games are made | **Templates, not generated code.** Five hand-built templates: runner, stacker, dodger, timing tap, flappy. The AI only writes a JSON config: template, title, colors, sprites, and tuning knobs (speed, gravity, jump, spawn rate, difficulty ramp, size, gap). This is more reliable, faster to iterate on, and safe, because no user-written code ever runs on players' phones. |
-| Assets | A library of emoji sprites, simple shapes, and color palettes, drawn in code. No AI-generated art for v1. |
-| AI | Convex AI Gateway (`openai/gpt-4o-mini` by default). Setting `AI_API_KEY` on the deployment switches to any OpenAI-compatible provider (`AI_BASE_URL`, `AI_MODEL`). |
-| Iteration loop | One screen: live preview on top, prompt bar and tweak chips below. Every change saves a new version, and undo is one tap. Generation progress shows live through a Convex reactive query. |
+| How games are made | **The AI writes real game code.** Creators vibecode: they describe a game, and the AI writes the complete JavaScript game. Each change request edits that code. "Templates" means a starter **environment**, not finished games: a canvas runtime with touch input, a score HUD, start/game-over/retry screens, physics and collision helpers, particles, screen shake, and an asset library. We do **not** offer sliders or settings knobs. Every change happens through a prompt. |
+| Assets | An asset library of emoji plus built-in shapes (circle, square, triangle, diamond, star, heart), drawn by `G.sprite`. Games can also draw anything with the canvas API. No AI-generated art for v1. |
+| AI | Convex AI Gateway, `anthropic/claude-sonnet-4.5` by default (override with `AI_MODEL`). Setting `AI_API_KEY` on the deployment switches to any OpenAI-compatible provider (`AI_BASE_URL`, `AI_MODEL`). Responses stream, so the editor shows live progress. Every result is syntax-checked, with one automatic repair round. |
+| Iteration loop | One screen: the live game preview on top, a prompt box and suggestion chips below. A Code toggle shows the source. If the game crashes at runtime, the error appears with a one-tap **Fix it** button that sends the error back to the AI. Every change saves a new version, and undo is one tap. |
 | Publishing | Goes live instantly. No review step for the hackathon. |
 | Remix | In v1. Remixing copies a published game's current version into your own draft, and the feed credits the original game. |
 | Accounts | Creating, remixing, and publishing need an account (Convex Auth, username and password). Playing doesn't; anonymous plays are counted with a device ID kept in secure storage. |
 | Ranking | Plays decayed by age, so new games still get seen instead of the earliest ones winning forever. |
-| Platform | Expo (React Native). Tested on iOS (Revyl's iPhone 16 simulator). Games run in a sandboxed WebView with a no-network content security policy. |
+| Platform | Expo (React Native). Tested on iOS (Revyl's iPhone 16 simulator). Games are untrusted code, so each one runs in a sandboxed WebView whose content security policy blocks all network access. |
 | Payments / ad revenue | **Later, not now.** Agreed that ad revenue share won't attract creators early. What attracts them first is an audience and play data. |
 
 ## Deliberately out of scope for v1
@@ -44,8 +44,8 @@ A mobile app where anyone can **vibecode** a hypercasual game. You describe the 
 
 ## Current state
 
-- **Shipped (PRs #2 and #3):**
-  - Convex schema, Convex Auth, and the five templates.
+- **Shipped (PRs #2, #3 and the vibecoding rework):**
+  - Convex schema, Convex Auth, the starter environment, and AI-written game code.
   - The create/tweak/undo/publish/remix backend.
   - Swipe feed with play counts.
   - Create tab with the live editor.
@@ -55,9 +55,10 @@ A mobile app where anyone can **vibecode** a hypercasual game. You describe the 
 
 ## Code map
 
-- `game/buildGameHtml.ts`: the canvas runtime and all five templates, turned into one self-contained HTML page.
-- `convex/gameConfig.ts`: the config schema, template defaults, and the sanitizer that clamps whatever the AI returns.
-- `convex/ai.ts`: the prompt-to-config generation action.
+- `convex/gameSdk.ts`: the starter environment (the `G` runtime) and the API docs the AI is given.
+- `convex/starterGames.ts`: five example games written against the environment. They seed the feed and serve as the AI's style example.
+- `game/buildGameHtml.ts`: wraps a game's code and the environment into one sandboxed HTML page.
+- `convex/ai.ts`: the Node action that streams the AI, extracts the code, syntax-checks it, and runs one repair round.
 - `convex/games.ts`: create, tweak, undo, publish, remix, feed, and the creator's own games.
 - `convex/plays.ts`: play tracking.
 - `convex/seed.ts`: seeds the starter games (`npx convex run seed:run`).
