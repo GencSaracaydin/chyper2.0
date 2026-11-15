@@ -1,0 +1,467 @@
+# Asset list for scripts/fal/generate.py. Each line: key | description
+# Sections: [sprite:<category>], [background], [sfx], [music]
+
+[sprite:characters]
+hero-cat | Orange tabby cat character, cheerful, full body, front view
+hero-dog | Brown puppy character with floppy ears, happy, full body
+hero-frog | Green frog character, big eyes, sitting, front view
+hero-bunny | White bunny character with pink ears, full body
+hero-fox | Orange fox character, smiling, full body
+hero-panda | Panda character, chubby, full body
+hero-penguin | Penguin character, waddling pose, full body
+hero-chick | Yellow baby chick character, round, full body
+hero-robot | Friendly blue robot character with antenna, full body
+hero-ninja | Cute ninja character in black outfit with red headband, full body
+hero-knight | Little knight character in silver armor with sword, full body
+hero-wizard | Little wizard character with purple hat and staff, full body
+hero-astronaut | Cute astronaut character in white spacesuit, full body
+hero-alien | Friendly green alien character with one big eye, full body
+hero-slime-green | Green slime blob character with cute face
+hero-slime-blue | Blue slime blob character with cute face
+hero-ghost | Cute white ghost character, friendly, floating
+hero-monster | Fuzzy purple monster character, friendly, full body
+hero-bird-red | Round red bird character flapping wings, side view facing right
+hero-fish | Orange clownfish character, side view facing right
+hero-bee | Cute bumblebee character flying, side view facing right
+hero-dragon | Baby green dragon character with small wings, full body
+hero-dino | Green dinosaur T-rex character, cute, side view facing right
+hero-unicorn | White unicorn character with rainbow mane, side view facing right
+hero-pig | Pink pig character, round, full body
+hero-monkey | Brown monkey character, playful, full body
+hero-octopus | Pink octopus character, cute, front view
+hero-ball | Red rubber ball character with a happy face
+hero-cube | Yellow cube character with a happy face
+hero-cowboy | Little cowboy character with hat, full body
+hero-princess | Little princess character with crown and pink dress, full body
+hero-pirate | Little pirate character with eyepatch and hat, full body
+hero-snowman | Cute snowman character with scarf
+hero-duck | Yellow rubber duck character, side view facing right
+hero-hamster | Chubby hamster character, full body
+hero-runner-boy | Cartoon boy runner in sneakers, running pose, side view facing right
+hero-runner-girl | Cartoon girl runner with ponytail, running pose, side view facing right
+hero-skater | Cartoon kid on a skateboard, side view facing right
+
+[sprite:enemies]
+enemy-bat | Purple bat enemy with wings spread, front view
+enemy-spider | Black cartoon spider enemy hanging, front view
+enemy-zombie | Green cartoon zombie enemy, arms forward, full body
+enemy-skeleton | Cartoon skeleton enemy, full body
+enemy-spiky-ball | Red spiky ball enemy with angry face
+enemy-bomb | Walking bomb enemy with lit fuse and angry face
+enemy-storm-cloud | Angry dark storm cloud enemy with lightning
+enemy-shark | Cartoon shark enemy with teeth, side view facing left
+enemy-crab | Red crab enemy with raised claws, front view
+enemy-snake | Green coiled snake enemy, front view
+enemy-ufo | Flying saucer UFO enemy with green dome
+enemy-mummy | Cartoon mummy enemy wrapped in bandages, full body
+enemy-robot | Evil red robot enemy with glowing eyes, full body
+enemy-goblin | Small green goblin enemy with club, full body
+enemy-jellyfish | Pink glowing jellyfish enemy
+enemy-wasp | Angry wasp enemy with stinger, side view facing left
+enemy-slime-red | Red angry slime blob enemy
+enemy-ghost-angry | Angry purple ghost enemy
+enemy-boss-monster | Big horned boss monster, menacing but cartoonish, front view
+enemy-piranha | Piranha fish enemy with sharp teeth, side view facing left
+enemy-cactus | Angry walking cactus enemy
+enemy-mole | Mole popping out of a dirt hole, for whack-a-mole games
+enemy-alien-invader | Pixel-style space invader alien enemy, front view
+enemy-tentacle-monster | Purple tentacle monster enemy, front view
+
+[sprite:vehicles]
+car-red | Red sports car, top-down view, pointing up
+car-blue | Blue hatchback car, top-down view, pointing up
+car-yellow-taxi | Yellow taxi car, top-down view, pointing up
+car-police | Police car with siren lights, top-down view, pointing up
+car-green | Green sedan car, top-down view, pointing up
+truck-delivery | White delivery truck, top-down view, pointing up
+bus-school | Yellow school bus, top-down view, pointing up
+motorcycle | Red motorcycle, top-down view, pointing up
+race-car | Formula race car, top-down view, pointing up
+car-side-red | Red cartoon car, side view facing right
+monster-truck | Monster truck with huge wheels, side view facing right
+rocket | Red and white rocket with flame, pointing up
+spaceship-hero | Sleek blue hero spaceship, top-down view, pointing up
+spaceship-enemy | Red enemy spaceship, top-down view, pointing down
+spaceship-boss | Large purple alien mothership, top-down view, pointing down
+plane-propeller-red | Red propeller plane, side view facing right
+jet-fighter | Grey jet fighter, top-down view, pointing up
+helicopter | Yellow helicopter, side view facing right
+hot-air-balloon | Colorful striped hot air balloon
+submarine | Yellow submarine, side view facing right
+boat-speed | Speedboat, top-down view, pointing up
+sailboat | Small sailboat, side view facing right
+bicycle | Bicycle, side view facing right
+tank | Green cartoon tank, top-down view, pointing up
+train-engine | Red steam train engine, side view facing right
+paper-plane | White folded paper airplane, side view facing right
+ufo-ship | Silver flying saucer with lights
+
+[sprite:collectibles]
+gold-coin | Shiny gold coin with a star emblem, front view
+silver-coin | Shiny silver coin with a star emblem, front view
+coin-stack | Stack of gold coins
+gem-red | Red ruby gem, faceted
+gem-blue | Blue sapphire gem, faceted
+gem-green | Green emerald gem, faceted
+gem-purple | Purple amethyst gem, faceted
+diamond | Sparkling white diamond
+gold-star | Glossy gold star
+heart-red | Glossy red heart
+heart-broken | Broken red heart cracked in two
+key-gold | Golden key
+treasure-chest | Wooden treasure chest overflowing with gold
+crown | Golden crown with jewels
+trophy | Gold trophy cup
+potion-red | Red health potion in a round flask
+potion-blue | Blue mana potion in a round flask
+potion-green | Green potion in a round flask
+magnet | Red horseshoe magnet power-up
+shield | Blue glowing shield power-up
+lightning-bolt | Yellow lightning bolt power-up
+clock | Alarm clock time bonus
+gift-box | Wrapped gift box with ribbon
+money-bag | Bag of money with dollar sign
+ring-gold | Gold ring with a gem
+egg-golden | Golden egg
+battery | Full green battery power-up
+feather | Magic feather power-up
+four-leaf-clover | Four leaf clover lucky charm
+mushroom-red | Red spotted mushroom power-up
+extra-life | Green 1-UP heart power-up
+star-rainbow | Rainbow colored star power-up
+bomb | Classic black round bomb with lit fuse
+dynamite | Red dynamite sticks with fuse
+snowflake | Blue ice snowflake freeze power-up
+hourglass | Hourglass with sand
+ticket | Golden ticket
+
+[sprite:food]
+apple-red | Shiny red apple
+banana | Yellow banana
+cherry | Pair of red cherries
+watermelon-slice | Watermelon slice
+strawberry | Red strawberry
+orange | Orange fruit
+grapes | Bunch of purple grapes
+pineapple | Pineapple
+lemon | Yellow lemon
+carrot-fresh | Orange carrot
+donut | Pink frosted donut with sprinkles
+cupcake | Cupcake with pink frosting and cherry
+pizza-slice | Pizza slice with pepperoni
+burger | Cheeseburger
+hotdog | Hot dog with mustard
+fries | French fries in red box
+ice-cream | Ice cream cone with three scoops
+candy | Wrapped candy
+lollipop | Swirl lollipop
+cookie | Chocolate chip cookie
+cake | Birthday cake with candles
+sushi | Salmon sushi nigiri
+taco | Taco
+soda-can | Red soda can
+coffee-cup | Coffee cup with steam
+egg-fried | Fried egg
+bread | Loaf of bread
+cheese | Wedge of yellow cheese with holes
+bone | Dog bone treat
+fish-food | Blue fish, food item, side view
+pancakes | Stack of pancakes with syrup
+
+[sprite:obstacles]
+spikes | Row of sharp metal spikes
+saw-blade | Spinning circular saw blade
+barrel | Wooden barrel
+crate | Wooden crate box
+crate-tnt | Red TNT explosive crate
+rock | Grey rock
+boulder | Large round boulder
+cactus | Green desert cactus
+tree-pine | Pine tree
+tree-round | Round leafy green tree
+bush | Green bush
+log | Wooden log lying horizontally
+pipe-green | Green warp pipe, vertical
+traffic-cone | Orange traffic cone
+roadblock | Striped red and white road barrier
+brick-wall | Section of red brick wall
+spring-coil | Coiled metal spring launcher
+trampoline | Small round trampoline
+ladder | Wooden ladder
+fence | Wooden picket fence section
+tire | Black rubber tire
+landmine | Landmine with red light
+portal | Swirling purple magic portal
+door | Wooden door
+flag-finish | Checkered finish line flag
+flag-checkpoint | Red checkpoint flag on pole
+iceberg | Floating iceberg
+lava-pool | Bubbling lava pool
+ice-block | Translucent ice block
+balloon-red | Red balloon with string
+bubble | Transparent soap bubble
+anvil | Heavy iron anvil
+spike-ball-chain | Spiked iron ball on chain
+laser-gate | Red laser gate barrier between two posts
+asteroid | Brown rocky asteroid
+meteor-flaming | Flaming meteor falling diagonally
+pillar-stone | Stone column pillar, vertical
+wrecking-ball | Wrecking ball on chain
+mailbox | Red mailbox
+hydrant | Red fire hydrant
+pothole | Pothole in road, top-down view
+oil-spill | Black oil slick puddle, top-down view
+
+[sprite:platforms]
+platform-grass-floating | Floating grass-topped dirt platform, wide horizontal
+platform-stone | Floating stone platform, wide horizontal
+platform-cloud | Fluffy white cloud platform, wide horizontal
+platform-ice | Icy blue platform, wide horizontal
+platform-plank | Wooden plank platform, wide horizontal
+platform-metal | Metal girder platform, wide horizontal
+platform-candy | Candy platform with frosting, wide horizontal
+platform-lava | Volcanic rock platform with glowing lava cracks, wide horizontal
+block-red | Glossy red square block
+block-blue | Glossy blue square block
+block-green | Glossy green square block
+block-yellow | Glossy yellow square block
+block-purple | Glossy purple square block
+block-orange | Glossy orange square block
+block-question | Golden question mark block
+block-brick | Brown brick block
+block-grass | Grass dirt block tile
+block-stone | Grey stone block tile
+block-wood | Wooden plank block tile
+tile-candy | Round candy tile for match-3 games, red
+tile-candy-blue | Round candy tile for match-3 games, blue
+tile-candy-green | Round candy tile for match-3 games, green
+tile-candy-yellow | Round candy tile for match-3 games, yellow
+tile-candy-purple | Round candy tile for match-3 games, purple
+
+[sprite:sports]
+ball-soccer | Soccer ball
+ball-basketball | Basketball
+ball-baseball | Baseball
+ball-tennis | Tennis ball
+ball-beach | Striped beach ball
+ball-bowling | Black bowling ball
+bowling-pin | White bowling pin
+ball-golf | Golf ball
+hockey-puck | Black hockey puck
+basketball-hoop | Basketball hoop with net and backboard, front view
+soccer-goal | Soccer goal with net, front view
+paddle | Ping pong paddle
+dartboard | Dartboard
+archery-target | Red and white archery target
+ball-8 | Pool 8-ball
+football | American football
+volleyball | Volleyball
+shuttlecock | Badminton shuttlecock
+skateboard | Skateboard, side view
+surfboard | Surfboard
+gold-medal | Gold medal with ribbon
+silver-medal | Silver medal with ribbon
+bronze-medal | Bronze medal with ribbon
+stopwatch | Stopwatch
+
+[sprite:weapons]
+projectile-arrow | Wooden arrow, pointing right
+projectile-bullet | Golden bullet, pointing right
+laser-blue | Blue glowing laser bolt, vertical
+laser-red | Red glowing laser bolt, vertical
+cannonball | Black iron cannonball
+missile | Missile with flame, pointing right
+shuriken | Steel ninja throwing star
+sword | Cartoon steel sword
+hammer | Cartoon hammer
+axe | Cartoon axe
+bow | Wooden bow
+cannon | Black cannon on wooden wheels, side view facing right
+water-gun | Colorful water pistol
+magic-wand | Magic wand with star tip
+fireball | Blazing fireball, moving right
+plasma-orb | Glowing green plasma energy orb
+knife | Throwing knife, pointing up
+
+[sprite:effects]
+fx-explosion | Cartoon explosion burst, orange and yellow
+fx-smoke-puff | Grey cartoon smoke puff cloud
+fx-sparkle | Yellow sparkle star twinkle
+fx-impact-star | Comic impact star burst, white and yellow
+fx-confetti | Burst of colorful confetti
+fx-splash | Blue water splash
+fx-fire | Cartoon fire flame
+fx-lightning | Bright lightning strike
+fx-heart-burst | Burst of small pink hearts
+fx-dust-poof | Small dust poof cloud
+fx-magic-swirl | Purple magic sparkle swirl
+fx-shockwave | Circular blue shockwave ring
+fx-blood-splat-green | Green slime splat
+fx-paint-splat | Colorful paint splat
+fx-speed-lines | Motion speed lines, horizontal
+fx-zzz | Sleeping Z Z Z letters
+fx-question-mark | Big yellow question mark
+fx-exclamation | Big red exclamation mark
+fx-skull | Cartoon white skull, game over
+fx-glow-orb | Soft glowing white light orb
+fx-rainbow | Small arc rainbow
+fx-coin-burst | Burst of gold coins flying out
+
+[sprite:ui]
+ui-play | Round green play button with white triangle icon, no text
+ui-pause | Round yellow pause button with white pause icon, no text
+ui-restart | Round blue restart button with circular arrow icon, no text
+ui-home | Round orange home button with house icon, no text
+ui-settings | Round grey settings button with gear icon, no text
+ui-sound-on | Round button with speaker icon, sound on, no text
+ui-sound-off | Round button with crossed out speaker icon, no text
+ui-arrow-left | Round button with left arrow, no text
+ui-arrow-right | Round button with right arrow, no text
+ui-arrow-up | Round button with up arrow, no text
+ui-check | Green round checkmark badge
+ui-cross | Red round X badge
+ui-lock | Closed golden padlock
+ui-unlock | Open golden padlock
+ui-star-empty | Empty grey star outline for ratings
+ui-star-full | Filled gold star for ratings
+ui-ribbon-banner | Blank red ribbon banner, no text
+ui-panel | Blank rounded wooden panel board, no text
+ui-speech-bubble | Blank white speech bubble, no text
+ui-tap-hand | Cartoon pointing hand finger tapping, tutorial hint
+ui-crosshair | Red target crosshair reticle
+ui-health-bar | Empty horizontal health bar frame with heart icon at left, no text
+ui-joystick | Virtual joystick thumbstick, round base with knob
+ui-gift-reward | Glowing reward chest with light rays
+ui-thumbs-up | Cartoon thumbs up hand
+ui-fire-streak | Flaming streak icon for combos
+
+[background]
+bg-sky-day | Bright blue sky with fluffy white clouds and distant green hills at the bottom
+bg-sky-sunset | Sunset sky with orange and pink clouds over rolling hills
+bg-night-stars | Night sky with stars and a crescent moon over dark hills
+bg-space | Deep space with colorful nebula, stars and distant planets
+bg-underwater | Underwater ocean scene with light rays, bubbles, coral and seaweed at the bottom
+bg-forest | Lush green forest with tall trees and sunlight
+bg-desert | Sunny desert with sand dunes, cacti and mesas
+bg-snow-mountains | Snowy mountains with pine trees and falling snow
+bg-city-day | Colorful city skyline in daytime
+bg-city-night | Neon city skyline at night with glowing windows
+bg-candy-land | Candy land with lollipop trees, pink hills and cotton candy clouds
+bg-volcano | Volcanic landscape with lava rivers and erupting volcano under a red sky
+bg-beach | Tropical beach with palm trees, ocean and sand
+bg-jungle | Dense jungle with vines, leaves and waterfalls
+bg-graveyard | Spooky haunted graveyard with full moon and bare trees
+bg-cave | Dark underground cave with crystals and stalactites
+bg-road-top-down | Top-down view of a straight vertical two-lane asphalt road with grass on both sides
+bg-river-top-down | Top-down view of a blue river flowing vertically with grassy banks
+bg-grass-top-down | Top-down view of a green grass field with small flowers
+bg-soccer-field | Top-down view of a soccer field, vertical orientation
+bg-ice-rink | Top-down view of a smooth ice rink
+bg-kitchen | Cartoon kitchen interior with counters and shelves
+bg-heaven-clouds | Heavenly sky full of fluffy clouds with golden light
+bg-synthwave | Retro synthwave grid landscape with neon sun
+bg-farm | Farm with red barn, fields and fences
+bg-castle | Fairy tale castle on a hill under blue sky
+bg-pastel | Soft pastel gradient with subtle floating shapes, minimal
+bg-dark-gradient | Dark purple to blue gradient with subtle glowing particles, minimal
+bg-ocean-surface | Ocean surface with waves and horizon under blue sky
+bg-sky-tall | Tall vertical sky gradient from light blue at bottom to deep blue at top with scattered clouds, for vertical jumping games
+bg-space-tall | Tall vertical starfield with scattered small planets, for vertical shooter games
+bg-arcade | Retro arcade interior with neon lights
+bg-classroom | Cartoon classroom with chalkboard and desks
+bg-tennis-court | Top-down view of a tennis court, vertical orientation
+
+[sfx]
+sfx-jump-boing | Short cartoon jump sound, springy upward boing | 0.5
+sfx-double-jump | Quick high pitched double jump whoosh | 0.5
+sfx-land | Soft thud of a character landing on ground | 0.4
+sfx-coin-ding | Bright retro video game coin pickup ding | 0.5
+sfx-gem | Sparkly magical gem pickup chime | 0.7
+sfx-power-up | Rising arcade power-up sound | 1.0
+sfx-power-down | Falling arcade power-down sound | 1.0
+sfx-extra-life | Cheerful 1-up extra life jingle, arcade | 1.0
+sfx-hurt | Cartoon character hurt hit sound, short oof | 0.5
+sfx-explosion-small | Small cartoon explosion pop | 0.8
+sfx-explosion-big | Big booming explosion with rumble | 2.0
+sfx-laser-pew | Retro sci-fi laser shot pew | 0.4
+sfx-shoot | Arcade blaster shot | 0.4
+sfx-whoosh | Fast air whoosh swipe | 0.5
+sfx-pop | Satisfying bubble pop | 0.3
+sfx-balloon-pop | Balloon popping | 0.4
+sfx-splash | Water splash | 0.8
+sfx-click | Crisp UI button click | 0.2
+sfx-tap | Soft satisfying tap for mobile game | 0.2
+sfx-back | UI back button soft click | 0.2
+sfx-error | Short negative error buzz | 0.5
+sfx-success | Pleasant success chime | 1.0
+sfx-level-up | Triumphant level up fanfare, short | 2.0
+sfx-game-over | Sad descending game over sound, cartoon | 2.0
+sfx-win | Happy victory fanfare, short | 2.5
+sfx-countdown-beep | Single countdown beep | 0.3
+sfx-go | Start race GO horn beep, higher pitch | 0.6
+sfx-tick | Clock tick | 0.2
+sfx-combo | Rising combo chime for consecutive hits | 0.6
+sfx-perfect | Bright sparkling perfect bonus chime | 1.0
+sfx-shield | Energy shield activation hum | 0.8
+sfx-dash | Quick dash swoosh | 0.4
+sfx-boing | Cartoon spring boing | 0.6
+sfx-car-crash | Car crash with metal crunch | 1.5
+sfx-engine | Car engine revving | 2.0
+sfx-car-horn | Cartoon car horn honk | 0.6
+sfx-glass-break | Glass shattering | 1.0
+sfx-wood-break | Wooden crate breaking | 0.8
+sfx-metal-clang | Metal clang hit | 0.6
+sfx-punch | Cartoon punch hit | 0.4
+sfx-sword | Sword slash swish | 0.5
+sfx-arrow | Arrow shot and fly | 0.6
+sfx-monster-growl | Cartoon monster growl | 1.2
+sfx-zombie | Cartoon zombie groan | 1.2
+sfx-meow | Cute cat meow | 0.8
+sfx-bark | Small dog bark | 0.5
+sfx-flap | Bird wing flap | 0.3
+sfx-ribbit | Frog ribbit | 0.5
+sfx-quack | Duck quack | 0.5
+sfx-chomp | Cartoon eating chomp | 0.4
+sfx-slurp | Cartoon slurp | 0.6
+sfx-burp | Cartoon burp | 0.6
+sfx-fart | Silly cartoon fart | 0.7
+sfx-cash | Cash register cha-ching | 1.0
+sfx-dice | Dice rolling on table | 1.0
+sfx-card-flip | Playing card flip | 0.3
+sfx-cheer | Crowd cheering | 2.0
+sfx-aww | Crowd disappointed aww | 1.5
+sfx-drumroll | Short drumroll | 2.0
+sfx-ding | Single bell ding | 0.8
+sfx-teleport | Sci-fi teleport warp | 0.8
+sfx-freeze | Ice freezing crackle | 0.8
+sfx-fire | Fire whoosh ignite | 0.8
+sfx-thunder | Thunder crack | 2.0
+sfx-footstep | Single cartoon footstep | 0.2
+sfx-slide | Sliding swoosh on surface | 0.6
+sfx-thud | Heavy thud hitting wall | 0.4
+sfx-stack | Block stacking placed click thunk | 0.3
+sfx-squish | Squishy slime squish | 0.4
+sfx-bounce | Rubber ball bounce | 0.3
+sfx-swing | Rope or bat swing whoosh | 0.4
+sfx-kick | Ball kick thump | 0.3
+sfx-unlock | Unlock reward sparkle | 1.0
+sfx-magic | Magic spell cast shimmer | 1.0
+sfx-alarm | Warning alarm beep loop | 1.0
+sfx-bubble | Underwater bubbles | 0.8
+sfx-chain | Chain rattle | 0.8
+
+[music]
+music-chiptune | Upbeat 8-bit chiptune video game loop, energetic, catchy melody
+music-ukulele | Happy ukulele and whistling casual game loop, bright and cheerful
+music-synthwave | Driving retro synthwave arcade loop, neon, energetic
+music-action | Tense fast action game loop with drums and synth bass
+music-lofi | Chill lofi hip hop loop for puzzle games, relaxing
+music-spooky | Spooky playful Halloween game loop with organ and pizzicato
+music-space | Ambient space game loop with pads and arpeggios
+music-boss | Intense 8-bit boss battle loop
+music-cute | Cute bouncy casual mobile game loop with marimba and glockenspiel
+music-menu | Friendly upbeat main menu theme for a mobile game
+music-tropical | Tropical steel drum beach game loop
+music-epic | Epic orchestral adventure loop, heroic
+music-runner | Fast upbeat electronic endless runner loop
+music-jazz | Smooth funky jazz loop for casual games
